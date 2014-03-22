@@ -1,0 +1,25 @@
+[user]
+	name = masaki
+	email = ikeda.masaki@gmail.com
+[core]
+	excludesfile = /Users/ikedamasaki/.gitignore_global
+	editor = vim -u NONE -N
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[color]
+	ui = true
+[alias]
+    co = checkout
+    st = status
+    br = branch
+    ci = commit
+    tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+[init]
+	templatedir = ~/.git_template
