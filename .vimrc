@@ -84,7 +84,7 @@ imap [ []<LEFT>
 imap ( ()<LEFT>
 
 " 保存時にtabを2スペースに変換する
-autocmd BufWritePre * :%s/\t/  /ge
+autocmd BufWritePre * :%s/\s\+$//ge
 
 " CTags
 nmap <C-]> g<C-]>
@@ -204,4 +204,5 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 au FileType vimfiler nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType vimfiler inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "
+
 
