@@ -1,7 +1,4 @@
 "
-"
-"
-
 " Vi互換モードをオフ（Vimの拡張機能を有効）
 set nocompatible
 
@@ -52,10 +49,10 @@ set visualbell
 set t_vb=
 
 " 全モードでマウスを有効化
-"set mouse=a
+set mouse=a
 
 " コマンドラインの高さを2行に
-"set cmdheight=2
+set cmdheight=2
 
 " 行番号を表示
 set number
@@ -77,6 +74,17 @@ set lcs=tab:>.,trail:_,extends:\
 set list
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNew * match JpSpace /　/
+
+" 対応する括弧やブレースを表示する
+set showmatch
+
+" 自動的に閉じ括弧を入力
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+
+" 保存時にtabを2スペースに変換する
+autocmd BufWritePre * :%s/\t/  /ge
 
 " CTags
 nmap <C-]> g<C-]>
