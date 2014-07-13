@@ -105,14 +105,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " " --> NeoBundle 'USER/REPOSITORY-NAME'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimproc', {
-    \ 'build' : {
-    \ 'mac' : 'make -f make_mac.mak',
-    \ },
+    \   'build' : {
+    \       'windows' : 'tools\\update-dll-mingw',
+    \       'mac'     : 'make -f make_mac.mak',
+    \       'unix'    : 'make -f make_unix.mak',
+    \   },
     \ }
 
 
@@ -122,28 +123,8 @@ NeoBundleCheck
 
 "------------------------------------------------------------
 " unite
-" Uniteを縦に分割して開く
-"let g:unite_enable_split_vertically = 1
-"let g:unite_winwidth = 30
 " 入力モードで開始する
 "let g:unite_enable_start_insert=1
-
-"------------------------------------------------------------
-" neocomplcache
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : ''
-    \ }
 
 "------------------------------------------------------------
 " neosnippet
