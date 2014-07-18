@@ -49,7 +49,7 @@ set visualbell
 set t_vb=
 
 " 全モードでマウスを有効化
-set mouse=a
+"set mouse=a
 
 " コマンドラインの高さを2行に
 set cmdheight=2
