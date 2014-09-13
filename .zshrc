@@ -176,3 +176,8 @@ export PATH=$PATH:/Applications/adt-bundle-mac/sdk/platform-tools
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+
+# for rbenv
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init - zsh)"
+
