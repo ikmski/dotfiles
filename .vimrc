@@ -116,6 +116,7 @@ NeoBundle 'Shougo/vimproc', {
     \   },
     \ }
 
+NeoBundle 'tpope/vim-fugitive'
 
 filetype plugin on
 filetype indent on
