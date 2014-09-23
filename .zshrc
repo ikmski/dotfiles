@@ -16,14 +16,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
-#PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~ %# "
-#RPROMPT="%{^[[32m%}[%n@%m:%d]%{^[[m%}"
-PS1='[%n %1~]$ '
-
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
@@ -46,25 +38,58 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-	/usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 
 ########################################
-# vcs_info
+# プロンプト
+#PS1='[%n %1~]$ '
 
+autoload -U promptinit; promptinit
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-precmd () {
-	psvar=()
-	LANG=en_US.UTF-8 vcs_info
-	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="%1(v|%F{green}%1v%f|)"
+autoload -Uz is-at-least
 
+# begin VCS
+zstyle ":vcs_info:*" enable git svn hg bzr
+zstyle ":vcs_info:*" formats "(%s)-[%b]"
+zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
+zstyle ":vcs_info:(svn|bzr):*" branchformat "%b:r%r"
+zstyle ":vcs_info:bzr:*" use-simple true
+
+zstyle ":vcs_info:*" max-exports 6
+
+setopt prompt_subst
+function vcs_echo {
+    local st branch color
+    STY= LANG=en_US.UTF-8 vcs_info
+    st=`git status 2> /dev/null`
+    if [[ -z "$st" ]]; then return; fi
+    branch="$vcs_info_msg_0_"
+    if   [[ -n "$vcs_info_msg_1_" ]]; then color=${fg[green]} #staged
+    elif [[ -n "$vcs_info_msg_2_" ]]; then color=${fg[red]} #unstaged
+    elif [[ -n `echo "$st" | grep "^Untracked"` ]]; then color=${fg[blue]} # untracked
+    else color=${fg[cyan]}
+    fi
+    echo "%{$color%}(%{$branch%})%{$reset_color%}"
+}
+# end VCS
+
+
+PROMPT=""
+PROMPT+="
+"
+PROMPT+='[%d] `vcs_echo`'
+PROMPT+="
+"
+PROMPT+='%n %(?.$.%F{red}$%f) '
+
+
+RPROMPT=""
+RPROMPT+="[%*]"
+#RPROMPT+="%1(v|%F{green}%1v%f|)"
 
 ########################################
 # オプション
@@ -142,14 +167,14 @@ alias -g G='| grep'
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then
-	# Mac
-	alias -g C='| pbcopy'
+    # Mac
+    alias -g C='| pbcopy'
 elif which xsel >/dev/null 2>&1 ; then
-	# Linux
-	alias -g C='| xsel --input --clipboard'
+    # Linux
+    alias -g C='| xsel --input --clipboard'
 elif which putclip >/dev/null 2>&1 ; then
-	# Cygwin
-	alias -g C='| putclip'
+    # Cygwin
+    alias -g C='| putclip'
 fi
 
 
@@ -157,14 +182,15 @@ fi
 ########################################
 # OS 別の設定
 case ${OSTYPE} in
-	darwin*)
-		#Mac用の設定
-		export CLICOLOR=1
-		alias ls='ls -l -G -F'
-		;;
-	linux*)
-		#Linux用の設定
-		;;
+    darwin*)
+        #Mac用の設定
+        export CLICOLOR=1
+        alias ls='ls -l -G -F'
+        ;;
+    linux*)
+        #Linux用の設定
+        alias ls='ls -F --color=auto'
+        ;;
 esac
 
 # vim:set ft=zsh:
