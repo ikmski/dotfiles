@@ -68,12 +68,27 @@ function vcs_echo {
     st=`git status 2> /dev/null`
     if [[ -z "$st" ]]; then return; fi
     branch="$vcs_info_msg_0_"
-    if   [[ -n "$vcs_info_msg_1_" ]]; then color=${fg[green]} #staged
-    elif [[ -n "$vcs_info_msg_2_" ]]; then color=${fg[red]} #unstaged
-    elif [[ -n `echo "$st" | grep "^Untracked"` ]]; then color=${fg[blue]} # untracked
-    else color=${fg[cyan]}
-    fi
+    color=`get-branch-status` #色だけ返ってくる
     echo "%{$color%}(%{$branch%})%{$reset_color%}"
+}
+function get-branch-status {
+    local res color
+    output=`git status --short 2> /dev/null`
+    if [ -z "$output" ]; then
+        res=':' # status Clean
+        color='%{'${fg[green]}'%}'
+    elif [[ $output =~ "[\n]?\?\? " ]]; then
+        res='?:' # Untracked
+        color='%{'${fg[yellow]}'%}'
+    elif [[ $output =~ "[\n]? M " ]]; then
+        res='M:' # Modified
+        color='%{'${fg[red]}'%}'
+    else
+        res='A:' # Added to commit
+        color='%{'${fg[cyan]}'%}'
+    fi
+    # echo ${color}${res}'%{'${reset_color}'%}'
+    echo ${color} # 色だけ返す
 }
 # end VCS
 
@@ -89,7 +104,6 @@ PROMPT+='%n %(?.$.%F{red}$%f) '
 
 RPROMPT=""
 RPROMPT+="[%*]"
-#RPROMPT+="%1(v|%F{green}%1v%f|)"
 
 ########################################
 # オプション
