@@ -96,14 +96,15 @@ function get-branch-status {
 PROMPT=""
 PROMPT+="
 "
-PROMPT+='[%d] `vcs_echo`'
+PROMPT+='%F{blue}%d%f `vcs_echo`'
 PROMPT+="
 "
-PROMPT+='%n %(?.$.%F{red}$%f) '
+PROMPT+='[%n@%m] '
+PROMPT+='%(?.$.%F{red}$%f) '
 
 
 RPROMPT=""
-RPROMPT+="[%*]"
+RPROMPT+="[%D %*]"
 
 ########################################
 # オプション
