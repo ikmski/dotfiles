@@ -26,9 +26,6 @@ set hlsearch
 " 削除できるようにする。
 set backspace=indent,eol,start
 
-" オートインデント
-set autoindent
-
 " 移動コマンドを使ったとき、行頭に移動しない
 set nostartofline
 
@@ -60,10 +57,20 @@ set number
 " キーコードはすぐにタイムアウト。マッピングはタイムアウトしない
 set notimeout ttimeout ttimeoutlen=200
 
-" タブ文字の代わりにスペース
+" オートインデント
+set autoindent
+"タブ入力を複数の空白入力に置き換える
 set expandtab
+"画面上でタブ文字が占める幅
 set tabstop=4
+"自動インデントでずれる幅
 set shiftwidth=4
+"連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set softtabstop=4
+"改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set smartindent
+
+
 
 " swapファイルとbackupファイル
 set directory=~/.vim/tmp
@@ -79,9 +86,12 @@ au BufRead,BufNew * match JpSpace /　/
 set showmatch
 
 " 自動的に閉じ括弧を入力
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
+"imap { {}<LEFT>
+"imap [ []<LEFT>
+"imap ( ()<LEFT>
+imap {<Enter> {}<Left><CR><ESC><S-o>
+imap [<Enter> []<Left><CR><ESC><S-o>
+imap (<Enter> ()<Left><CR><ESC><S-o>
 
 " 保存時にtabを2スペースに変換する
 autocmd BufWritePre * :%s/\s\+$//ge
