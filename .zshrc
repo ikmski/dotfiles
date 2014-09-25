@@ -219,6 +219,6 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 
 # for rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init - zsh)"
+#export PATH=$HOME/.rbenv/bin:$PATH
+#eval "$(rbenv init - zsh)"
 
