@@ -115,6 +115,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " " --> NeoBundle 'USER/REPOSITORY-NAME'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimfiler.vim'
@@ -136,6 +137,11 @@ NeoBundleCheck
 " unite
 " 入力モードで開始する
 "let g:unite_enable_start_insert=1
+
+"------------------------------------------------------------
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
 
 "------------------------------------------------------------
 " neosnippet
