@@ -116,6 +116,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " GitHubリポジトリにあるプラグインを利用する
 " " --> NeoBundle 'USER/REPOSITORY-NAME'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
@@ -205,7 +206,7 @@ call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 " キーマップ
 " Unite
 " ブックマーク一覧
-nmap <silent> ,uo :<C-u>Unite bookmark<CR>
+nmap <silent> ,uk :<C-u>Unite bookmark<CR>
 " バッファ一覧
 nmap <silent> ,ub :<C-u>Unite buffer<CR>
 " ファイル一覧
@@ -218,6 +219,8 @@ nmap <silent> ,um :<C-u>Unite file_mru<CR>
 nmap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 " 全部乗せ
 nmap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" アウトライン
+nmap <silent> ,uo :<C-u>Unite outline<CR>
 
 " VimFiler
 nmap <silent>,fi :<C-u>VimFiler<CR>
