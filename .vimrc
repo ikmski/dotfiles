@@ -16,6 +16,9 @@ set hidden
 " コマンドライン補完を便利に
 set wildmenu
 
+" 他で書き換えられたら自動で読み直す
+set autoread
+
 " タイプ途中のコマンドを画面最下行に表示
 set showcmd
 
