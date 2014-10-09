@@ -89,12 +89,15 @@ au BufRead,BufNew * match JpSpace /　/
 set showmatch
 
 " 自動的に閉じ括弧を入力
-"imap { {}<LEFT>
-"imap [ []<LEFT>
-"imap ( ()<LEFT>
-imap {<Enter> {}<Left><CR><ESC><S-o>
-imap [<Enter> []<Left><CR><ESC><S-o>
-imap (<Enter> ()<Left><CR><ESC><S-o>
+"inoremap { {}<LEFT>
+"inoremap [ []<LEFT>
+"inoremap ( ()<LEFT>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+inoremap ' ''<LEFT>
+inoremap " ""<LEFT>
 
 " 保存時にtabを2スペースに変換する
 autocmd BufWritePre * :%s/\s\+$//ge
