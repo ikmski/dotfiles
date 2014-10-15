@@ -108,6 +108,9 @@ nmap <C-]> g<C-]>
 " QuickFix
 autocmd QuickFixCmdPost *grep* cwindow
 
+" Git
+autocmd FileType git :setlocal foldlevel=99
+
 "------------------------------------------------------------
 " neobundle
 if has('vim_starting')
@@ -137,6 +140,7 @@ NeoBundle 'Shougo/vimproc', {
     \ }
 
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'gregsexton/gitv'
 
 filetype plugin on
 filetype indent on
