@@ -116,7 +116,7 @@ autocmd FileType git :setlocal foldlevel=99
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -141,6 +141,8 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
+
+call neobundle#end()
 
 filetype plugin on
 filetype indent on
