@@ -23,3 +23,5 @@
     tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order
 [init]
 	templatedir = ~/.git_template
+[push]
+	default = simple
