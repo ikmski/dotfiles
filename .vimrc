@@ -73,6 +73,9 @@ set softtabstop=4
 "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 
+" 右、下に分割して開く
+set splitright
+set splitbelow
 
 
 " swapファイルとbackupファイル
