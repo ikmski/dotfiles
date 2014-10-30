@@ -8,7 +8,9 @@ filetype indent plugin on
 " Enable syntax highlighting
 " 色づけをオン
 syntax on
-colorscheme default
+
+set t_ut=
+set t_Co=256
 
 " バッファを保存しなくても他のバッファを表示できるようにする
 set hidden
@@ -145,6 +147,16 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 
+" カラースキーム
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'modess/vim-phpcolors'
+NeoBundle 'michalbachowski/vim-wombat256mod'
+
+
 call neobundle#end()
 
 filetype plugin on
@@ -263,4 +275,9 @@ au FileType vimfiler nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType vimfiler inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "
 
-
+" デフォルトカラースキーム
+"colorscheme default
+"colorscheme hybrid
+"colorscheme molokai
+"colorscheme wombat256mod
+colorscheme jellybeans
