@@ -75,6 +75,11 @@ set softtabstop=4
 "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 
+
+" コメント文字列
+set comments+=sr:/**
+
+
 " 右、下に分割して開く
 set splitright
 set splitbelow
@@ -277,7 +282,7 @@ au FileType vimfiler inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 " デフォルトカラースキーム
 "colorscheme default
-"colorscheme hybrid
+colorscheme hybrid
 "colorscheme molokai
 "colorscheme wombat256mod
-colorscheme jellybeans
+"colorscheme jellybeans
