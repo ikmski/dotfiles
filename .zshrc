@@ -3,6 +3,11 @@
 #export LANG=ja_JP.UTF-8
 export LANG=en_US.UTF-8
 
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
 
 # 色を使用出来るようにする
 autoload -Uz colors
