@@ -116,7 +116,7 @@ autocmd BufWritePre * :%s/\s\+$//ge
 nmap <C-]> g<C-]>
 
 " QuickFix
-autocmd QuickFixCmdPost *grep* cwindow
+autocmd QuickFixCmdPost *grep*,make cwindow
 
 " Git
 autocmd FileType git :setlocal foldlevel=99
