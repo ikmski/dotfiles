@@ -151,6 +151,7 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
+NeoBundle 'cohama/agit.vim'
 
 " カラースキーム
 NeoBundle 'ujihisa/unite-colorscheme'
