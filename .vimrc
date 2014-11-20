@@ -149,9 +149,14 @@ NeoBundle 'Shougo/vimproc', {
     \   },
     \ }
 
+" Git
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'cohama/agit.vim'
+
+"
+NeoBundle 'xmledit'
+
 
 " カラースキーム
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -233,6 +238,11 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_edit_action = 'open'
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+
+
+"------------------------------------------------------------
+" xmledit
+let xml_tag_syntax_prefixes = 'html\|xml\|xsl\|docbk\|smarty'
 
 
 "------------------------------------------------------------
