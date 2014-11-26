@@ -109,6 +109,15 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
 
+" バッファの移動
+" 一つ前のバッファを開く
+nnoremap <silent>bp :bprevious<CR>
+" 次のバッファを開く
+nnoremap <silent>bn :bnext<CR>
+" 直前のバッファを開く
+nnoremap <silent>bb :b#<CR>
+
+
 " 保存時にtabを2スペースに変換する
 autocmd BufWritePre * :%s/\s\+$//ge
 
