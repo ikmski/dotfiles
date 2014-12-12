@@ -7,3 +7,5 @@ ln -s -b ~/dotfiles/.zshrc ~/.zshrc
 ln -s -b ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s -b ~/dotfiles/.git_template/ ~/.git_template
 ln -s -b ~/dotfiles/.tmux.conf ~/.tmux.conf
+
+mkdir ~/.vim/bundle
