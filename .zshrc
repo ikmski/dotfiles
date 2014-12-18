@@ -233,6 +233,6 @@ export PATH=/usr/local/bin:$PATH
 if [ -x "`which go`" ]; then
     export GOROOT=`go env GOROOT`
     export GOPATH=$HOME/go/vendor:$HOME/go/user
-    export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+    export PATH=$HOME/go/vendor/bin:$HOME/go/user/bin:$GOROOT/bin:$PATH
 fi
 

@@ -157,15 +157,19 @@ NeoBundle 'Shougo/vimproc', {
     \       'unix'    : 'make -f make_unix.mak',
     \   },
     \ }
+NeoBundle 'majutsushi/tagbar'
 
 " Git
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'cohama/agit.vim'
 
-"
+" HTML
 NeoBundle 'xmledit'
 
+" Go
+NeoBundle 'dgryski/vim-godef'
+NeoBundle 'vim-jp/vim-go-extra'
 
 " カラースキーム
 NeoBundle 'ujihisa/unite-colorscheme'
