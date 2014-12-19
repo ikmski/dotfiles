@@ -1,3 +1,8 @@
+# Source global definitions
+if [ -f /etc/zshrc ]; then
+	. /etc/zshrc
+fi
+
 ########################################
 # 環境変数
 #export LANG=ja_JP.UTF-8
