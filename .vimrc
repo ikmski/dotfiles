@@ -170,6 +170,8 @@ NeoBundle 'xmledit'
 " Go
 NeoBundle 'dgryski/vim-godef'
 NeoBundle 'vim-jp/vim-go-extra'
+" vim-ft-goは最新版のvimを使えない場合のみ
+NeoBundle 'google/vim-ft-go'
 
 " カラースキーム
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -303,6 +305,13 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 au FileType vimfiler nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType vimfiler inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "
+
+" for GoLang
+set rtp+=$GOROOT/misc/vim
+set rtp+=$HOME/go/vendor/src/github.com/nsf/gocode/vim
+
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
 
 " デフォルトカラースキーム
 "colorscheme default
