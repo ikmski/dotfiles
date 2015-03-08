@@ -204,6 +204,7 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
+alias tmux="TERM=screen-256color-bce tmux"
 
 
 ########################################
