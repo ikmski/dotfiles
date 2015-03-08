@@ -2,13 +2,14 @@
 	name = masaki
 	email = ikeda.masaki@gmail.com
 [core]
-	excludesfile = /Users/ikedamasaki/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vim -u NONE -N
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
 [mergetool "sourcetree"]
 	cmd =
+	trustExitCode = true
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -19,7 +20,7 @@
     st = status
     br = branch
     ci = commit
-    tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order
+    tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order --all
 [init]
 	templatedir = ~/.git_template
 [push]
