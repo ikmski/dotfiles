@@ -22,6 +22,8 @@ do
       mv ${HOME}/${file} ${HOME}/${file}.bak
       ln -s ${HOME}/dotfiles/${file} ${HOME}/${file}
     fi
+  else
+    ln -s ${HOME}/dotfiles/${file} ${HOME}/${file}
   fi
 done
 
