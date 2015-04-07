@@ -236,9 +236,9 @@ export PATH=/usr/local/bin:$PATH
 #eval "$(rbenv init - zsh)"
 
 # for golang
-if [ -x "`which go`" ]; then
-    export GOROOT=`go env GOROOT`
-    export GOPATH=$HOME/go/vendor:$HOME/go/user
-    export PATH=$HOME/go/vendor/bin:$HOME/go/user/bin:$GOROOT/bin:$PATH
-fi
+#if [ -x "`which go`" ]; then
+#    export GOROOT=`go env GOROOT`
+#    export GOPATH=$HOME/go/vendor:$HOME/go/user
+#    export PATH=$HOME/go/vendor/bin:$HOME/go/user/bin:$GOROOT/bin:$PATH
+#fi
 
