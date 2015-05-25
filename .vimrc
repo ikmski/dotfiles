@@ -311,7 +311,7 @@ set rtp+=$GOROOT/misc/vim
 set rtp+=$HOME/go/vendor/src/github.com/nsf/gocode/vim
 
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
+autocmd BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4 completeopt=menu,preview
 
 " デフォルトカラースキーム
 "colorscheme default
