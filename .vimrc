@@ -95,8 +95,12 @@ set list
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNew * match JpSpace /　/
 
-" 対応する括弧やブレースを表示する
+" 入力時に対応する括弧やブレースを表示する
 set showmatch
+set matchtime=1
+
+" カーソルがのったときに対応する括弧をハイライトしない
+let loaded_matchparen=1
 
 " 自動的に閉じ括弧を入力
 "inoremap { {}<LEFT>
