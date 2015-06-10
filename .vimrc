@@ -177,6 +177,15 @@ NeoBundle 'vim-jp/vim-go-extra'
 " vim-ft-goは最新版のvimを使えない場合のみ
 NeoBundle 'google/vim-ft-go'
 
+" Markdown
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+
+au BufRead,BufNewFile *.md set filetype=markdown
+"let g:previm_open_cmd = 'open -a Chrome'
+
+
 " カラースキーム
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'nanotech/jellybeans.vim'
