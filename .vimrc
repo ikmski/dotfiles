@@ -178,7 +178,7 @@ NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'google/vim-ft-go'
 
 " Haskell
-NeoBundle 'raicho/haskell-vim'
+NeoBundle 'dag/vim2hs'
 
 " Markdown
 NeoBundle 'plasticboy/vim-markdown'
