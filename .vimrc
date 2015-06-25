@@ -177,6 +177,9 @@ NeoBundle 'vim-jp/vim-go-extra'
 " vim-ft-goは最新版のvimを使えない場合のみ
 NeoBundle 'google/vim-ft-go'
 
+" Haskell
+NeoBundle 'raicho/haskell-vim'
+
 " Markdown
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
@@ -325,6 +328,10 @@ set rtp+=$HOME/go/vendor/src/github.com/nsf/gocode/vim
 
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4 completeopt=menu,preview
+
+" for Haskell
+autocmd BufNewFile,BufRead *.hs set expandtab tabstop=4 shiftwidth=4 completeopt=menu,preview
+
 
 " デフォルトカラースキーム
 "colorscheme default
