@@ -334,6 +334,7 @@ autocmd BufNewFile,BufRead *.hs set expandtab tabstop=4 shiftwidth=4 completeopt
 
 
 " デフォルトカラースキーム
+:set background=dark
 "colorscheme default
 colorscheme hybrid
 "colorscheme molokai
