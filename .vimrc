@@ -185,7 +185,6 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 
-au BufRead,BufNewFile *.md set filetype=markdown
 "let g:previm_open_cmd = 'open -a Chrome'
 
 
@@ -204,6 +203,14 @@ call neobundle#end()
 filetype plugin on
 filetype indent on
 NeoBundleCheck
+
+"------------------------------------------------------------
+" set filetype
+"------------------------------------------------------------
+au BufRead,BufNewFile *.md   set filetype=markdown
+au BufRead,BufNewFile *.volt set filetype=htmldjango
+au BufRead,BufNewFile *.tpl  set filetype=htmldjango
+
 
 "------------------------------------------------------------
 " unite
