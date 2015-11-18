@@ -184,6 +184,9 @@ alias mkdir='mkdir -p'
 
 alias vi='vim'
 
+alias ssh='~/bin/ssh-color'
+compdef _ssh ssh-color=ssh
+
 #alias ctags='/usr/local/bin/ctags'
 
 # sudo の後のコマンドでエイリアスを有効にする
@@ -229,6 +232,9 @@ esac
 # Android SDK
 export PATH=$PATH:/Applications/adt-bundle-mac/sdk/platform-tools
 
+# local bin
+export PATH=$PATH:~/bin
+#
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
