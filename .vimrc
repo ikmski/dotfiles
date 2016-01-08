@@ -5,6 +5,10 @@ set nocompatible
 " ファイル名と内容によってファイルタイプを判別し、ファイルタイププラグインを有効にする
 filetype indent plugin on
 
+" 文字コード
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+
 " Enable syntax highlighting
 " 色づけをオン
 syntax on
