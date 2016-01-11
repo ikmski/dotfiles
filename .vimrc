@@ -7,7 +7,7 @@ filetype indent plugin on
 
 " 文字コード
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 
 " Enable syntax highlighting
 " 色づけをオン
