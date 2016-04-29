@@ -129,6 +129,20 @@ nnoremap <silent>bb :b#<CR>
 " 保存時にtabを2スペースに変換する
 autocmd BufWritePre * :%s/\s\+$//ge
 
+
+" vsplit 高速化
+if has("vim_starting") && !has('gui_running') && has('vertsplit')
+  function! EnableVsplitMode()
+    " enable origin mode and left/right margins
+    let &t_CS = "y"
+    let &t_ti = &t_ti . "\e[?6;69h"
+    let &t_te = "\e[?6;69l\e[999H" . &t_te
+    let &t_CV = "\e[%i%p1%d;%p2%ds"
+    call writefile([ "\e[?6;69h" ], "/dev/tty", "a")
+  endfunction
+endif
+
+
 " CTags
 nmap <C-]> g<C-]>
 
@@ -188,6 +202,9 @@ NeoBundle 'dag/vim2hs'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
+
+" coffee script
+NeoBundle 'kchmck/vim-coffee-script'
 
 "let g:previm_open_cmd = 'open -a Chrome'
 
