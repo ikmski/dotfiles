@@ -230,7 +230,7 @@ esac
 
 ##########################################
 # Android SDK
-export PATH=$PATH:/Applications/adt-bundle-mac/sdk/platform-tools
+#export PATH=$PATH:/Applications/adt-bundle-mac/sdk/platform-tools
 
 # local bin
 export PATH=$PATH:~/bin

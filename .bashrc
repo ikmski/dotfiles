@@ -1,5 +1,7 @@
-#
-#
+# Source global definitions
+if [ -f /etc/bashhrc ]; then
+    . /etc/bashhrc
+fi
 
 ##########################################
 # エイリアス
@@ -17,7 +19,7 @@ PS1='[\u \W]\$ '
 
 ##########################################
 # Android SDK
-export PATH=$PATH:/Applications/android-sdk-macosx/platform-tools
+#export PATH=$PATH:/Applications/android-sdk-macosx/platform-tools
 
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
