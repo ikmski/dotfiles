@@ -209,8 +209,6 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
-alias tmux="TERM=screen-256color-bce tmux"
-
 
 ########################################
 # OS 別の設定
@@ -219,6 +217,9 @@ case ${OSTYPE} in
         #Mac用の設定
         export CLICOLOR=1
         alias ls='ls -l -G -F'
+
+        alias tmux="TERM=screen-256color-bce tmux"
+
         ;;
     linux*)
         #Linux用の設定
