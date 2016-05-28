@@ -184,9 +184,6 @@ alias mkdir='mkdir -p'
 
 alias vi='vim'
 
-alias ssh='~/bin/ssh-color'
-compdef _ssh ssh-color=ssh
-
 #alias ctags='/usr/local/bin/ctags'
 
 # sudo の後のコマンドでエイリアスを有効にする
