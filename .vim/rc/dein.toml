@@ -1,0 +1,184 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+    "let g:unite_enable_start_insert=1
+
+    " キーマップ
+    nmap <silent> ,ub :<C-u>Unite buffer<CR> " バッファ一覧
+    nmap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR> " ファイル一覧
+    nmap <silent> ,uo :<C-u>Unite outline<CR> " アウトライン
+    nmap <silent> ,um :<C-u>Unite file_mru<CR> " 最近使用したファイル一覧
+    nmap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
+    nmap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR> " 全部乗せ
+
+    " ウィンドウを新規タブで開く
+    au FileType unite nnoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
+    au FileType unite inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
+    " ウィンドウを分割して開く
+    au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    " ウィンドウを縦に分割して開く
+    au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+    au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+    " ESCキーを2回押すと終了する
+    au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+    au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+'''
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+hook_add = '''
+    let g:vimfiler_as_default_explorer = 1
+    let g:vimfiler_safe_mode_by_default = 0
+    let g:vimfiler_edit_action = 'open'
+
+    " キーマップ
+    nmap <silent>,fi :<C-u>VimFiler<CR>
+    nmap <silent>,fs :<C-u>VimFiler -split -simple -winwidth=30 -no-quit<CR>
+
+    " ウィンドウを新規タブで開く
+    au FileType vimfiler nnoremap <silent> <buffer> <expr> <C-t> vimfiler#do_action('tabopen')
+    au FileType vimfiler inoremap <silent> <buffer> <expr> <C-t> vimfiler#do_action('tabopen')
+    " ウィンドウを分割して開く
+    au FileType vimfiler nnoremap <silent> <buffer> <expr> <C-j> vimfiler#do_action('split')
+    au FileType vimfiler inoremap <silent> <buffer> <expr> <C-j> vimfiler#do_action('split')
+    " ウィンドウを縦に分割して開く
+    au FileType vimfiler nnoremap <silent> <buffer> <expr> <C-l> vimfiler#do_action('vsplit')
+    au FileType vimfiler inoremap <silent> <buffer> <expr> <C-l> vimfiler#do_action('vsplit')
+    " ESCキーを2回押すと終了する
+    au FileType vimfiler nnoremap <silent> <buffer> <ESC><ESC> q
+    au FileType vimfiler inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+'''
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neocomplcache'
+hook_add = '''
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
+    " Use neocomplcache.
+    let g:neocomplcache_enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplcache_enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:neocomplcache_min_syntax_length = 3
+    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      return neocomplcache#smart_close_popup() . "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>  neocomplcache#close_popup()
+    inoremap <expr><C-e>  neocomplcache#cancel_popup()
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_add = '''
+    " Plugin key-mappings.
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+    " SuperTab like snippets behavior.
+    " TABで候補を遅れるようにする
+    "imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+    " For snippet_complete marker.
+    if has('conceal')
+        set conceallevel=2 concealcursor=i
+    endif
+
+    " Enable snipMate compatibility feature.
+    let g:neosnippet#enable_snipmate_compatibility = 1
+
+    " Tell Neosnippet about the other snippets
+    let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+hook_add = '''
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+# Git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'gregsexton/gitv'
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+
+# HTML
+[[plugins]]
+repo = 'xmledit'
+hook_add = '''
+    let xml_tag_syntax_prefixes = 'html\|xml\|xsl\|docbk\|smarty'
+'''
+
+# Go
+[[plugins]]
+repo = 'dgryski/vim-godef'
+
+[[plugins]]
+repo = 'vim-jp/vim-go-extra'
+
+# Haskell
+[[plugins]]
+repo = 'dag/vim2hs'
+
+# Markdown
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+# coffee script
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+
+# Colors
+[[plugins]] # hybrid
+repo = 'w0ng/vim-hybrid'
+
