@@ -1,12 +1,16 @@
 #!/bin/bash
 
+mkdir -p ~/.vim
+mkdir -p ~/.vim/tmp
+
 DOT_FILES=(
  .vimrc
+ .vim/rc
  .bash_profile
  .bashrc
  .zshrc
  .gitconfig
- .git_template/
+ .git_template
  .tmux.conf
 )
 
@@ -27,5 +31,3 @@ do
   fi
 done
 
-mkdir -p ~/.vim/bundle
-mkdir -p ~/.vim/tmp
