@@ -208,6 +208,15 @@ NeoBundle 'kchmck/vim-coffee-script'
 
 "let g:previm_open_cmd = 'open -a Chrome'
 
+" C#
+"NeoBundleLazy 'OmniSharp/omnisharp-vim', {
+"\   'autoload': { 'filetypes': [ 'cs', 'csi', 'csx' ] },
+"\   'build': {
+"\     'windows' : 'msbuild server/OmniSharp.sln',
+"\     'mac': 'xbuild server/OmniSharp.sln',
+"\     'unix': 'xbuild server/OmniSharp.sln',
+"\   },
+"\ }
 
 " カラースキーム
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -360,6 +369,8 @@ autocmd BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4 completeo
 " for Haskell
 autocmd BufNewFile,BufRead *.hs set expandtab tabstop=4 shiftwidth=4 completeopt=menu,preview
 
+" for C#
+autocmd BufNewFile,BufRead *.cs set noexpandtab tabstop=4 shiftwidth=4 completeopt=menu,preview
 
 " デフォルトカラースキーム
 :set background=dark

@@ -182,6 +182,8 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
+alias less='less --tabs=4'
+
 alias vi='vim'
 
 #alias ctags='/usr/local/bin/ctags'
