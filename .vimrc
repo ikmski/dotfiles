@@ -106,6 +106,9 @@ set matchtime=1
 " カーソルがのったときに対応する括弧をハイライトしない
 let loaded_matchparen=1
 
+" ESC
+inoremap <C-j> <esc>
+
 " 自動的に閉じ括弧を入力
 "inoremap { {}<LEFT>
 "inoremap [ []<LEFT>
