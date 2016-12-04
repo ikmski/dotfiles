@@ -175,8 +175,8 @@ repo = 'kannokanno/previm'
 repo = 'tyru/open-browser.vim'
 
 # coffee script
-[[plugins]]
-repo = 'kchmck/vim-coffee-script'
+#[[plugins]]
+Erepo = 'kchmck/vim-coffee-script'
 
 # Colors
 [[plugins]] # hybrid
