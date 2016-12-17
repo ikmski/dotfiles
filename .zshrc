@@ -16,6 +16,8 @@ else
     export TERM='xterm-color'
 fi
 
+export XDG_CONFIG_HOME=$HOME/.config
+
 # 色を使用出来るようにする
 autoload -Uz colors
 colors

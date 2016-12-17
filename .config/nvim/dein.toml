@@ -1,0 +1,25 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+    nmap <silent> ,ub :<C-u>Denite -mode=normal buffer<CR> " バッファ一覧
+    nmap <silent> ,uf :<C-u>DeniteBufferDir -mode=normal file_rec<CR> " ファイル一覧
+    nmap <silent> ,um :<C-u>Denite -mode=normal file_mru<CR> " 最近使用したファイル一覧
+    nmap <silent> ,uu :<C-u>Denite -mode=normal buffer file_mru<CR> " 常用セット
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+# Colors
+[[plugins]] # hybrid
+repo = 'w0ng/vim-hybrid'
+
