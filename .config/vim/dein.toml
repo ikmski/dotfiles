@@ -19,3 +19,16 @@ repo = 'Shougo/unite-outline'
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+hook_add = '''
+    let g:vimfiler_as_default_explorer = 1
+    let g:vimfiler_safe_mode_by_default = 0
+    let g:vimfiler_edit_action = 'open'
+    " キーマップ
+    nmap <silent>,fi :<C-u>VimFiler<CR>
+    " ウィンドウを縦に分割して開く
+    au FileType vimfiler nnoremap <silent> <buffer> <expr> <C-l> vimfiler#do_action('vsplit')
+    au FileType vimfiler inoremap <silent> <buffer> <expr> <C-l> vimfiler#do_action('vsplit')
+'''
+
