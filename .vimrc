@@ -64,3 +64,26 @@ set confirm
 " 他で書き換えられたら自動で読み直す
 set autoread
 
+
+"-----------------------------------------------------------
+" key map
+"-----------------------------------------------------------
+" キーコードはすぐにタイムアウト。マッピングはタイムアウトしない
+set notimeout ttimeout ttimeoutlen=200
+
+" 自動的に閉じ括弧を入力
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+inoremap ' ''<LEFT>
+inoremap " ""<LEFT>
+
+" バッファの移動
+" 一つ前のバッファを開く
+nnoremap <silent>bp :bprevious<CR>
+" 次のバッファを開く
+nnoremap <silent>bn :bnext<CR>
+" 直前のバッファを開く
+nnoremap <silent>bb :b#<CR>
+
