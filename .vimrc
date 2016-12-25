@@ -94,3 +94,12 @@ nnoremap <silent>bb :b#<CR>
 " QuickFix
 autocmd QuickFixCmdPost *grep*,make cwindow
 
+
+"-----------------------------------------------------------
+" misc
+"-----------------------------------------------------------
+" swapファイルとbackupファイル
+set directory=~/.vim/tmp
+set backupdir=~/.vim/tmp
+
+
