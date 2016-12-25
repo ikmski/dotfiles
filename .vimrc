@@ -87,3 +87,10 @@ nnoremap <silent>bn :bnext<CR>
 " 直前のバッファを開く
 nnoremap <silent>bb :b#<CR>
 
+
+"-----------------------------------------------------------
+" auto command
+"-----------------------------------------------------------
+" QuickFix
+autocmd QuickFixCmdPost *grep*,make cwindow
+
