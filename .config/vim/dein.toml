@@ -22,9 +22,15 @@ depends = ['Shougo/unite.vim']
 repo = 'Shougo/neomru.vim'
 depends = ['Shougo/unite.vim']
 
+# Vimproc
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
 # VimFiler
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
+depends = ['Shougo/unite.vim']
 hook_add = '''
     let g:vimfiler_as_default_explorer = 1
     let g:vimfiler_safe_mode_by_default = 0
