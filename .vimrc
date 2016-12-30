@@ -1,6 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &compatible
+   set nocompatible
+endif
 
 "-----------------------------------------------------------
 " load defaults.vim
@@ -91,6 +94,10 @@ nnoremap <silent>bb :b#<CR>
 "-----------------------------------------------------------
 " auto command
 "-----------------------------------------------------------
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
 " QuickFix
 autocmd QuickFixCmdPost *grep*,make cwindow
 
@@ -115,35 +122,46 @@ let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 " dein.vim がなければ github から落としてくる
-if !isdirectory(s:dein_repo_dir)
+if !isdirectory(s:dein_dir)
   call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
-let &runtimepath = s:dein_repo_dir .",". &runtimepath
+
+let &runtimepath = &runtimepath . "," . s:dein_repo_dir
 
 " プラグインリストを収めた TOML ファイル
-let g:rc_dir    = s:config_home . '/vim/'
-let s:toml      = g:rc_dir . 'dein.toml'
-let s:lazy_toml = g:rc_dir . 'dein_lazy.toml'
+let s:rc_dir    = s:config_home . '/vim/'
+let s:toml      = s:rc_dir . 'dein.toml'
+let s:lazy_toml = s:rc_dir . 'dein_lazy.toml'
 
 " 設定開始
 if dein#load_state(s:dein_dir)
 
   " 第二引数に toml ファイルを追加しておく
   " toml に変更があった場合にキャッシュの自動削除が動くようになる。
-  call dein#begin(s:dein_dir, [s:toml, s:lazy_toml])
+  call dein#begin(s:dein_dir, [$MYVIMRC, s:toml, s:lazy_toml])
 
   " プラグイン読み込み＆キャッシュ作成
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-  " 設定終了
+    " 設定終了
   call dein#end()
   call dein#save_state()
+
+  " 不足プラグインの自動インストール
+  if dein#check_install()
+    call dein#install()
+  endif
+
+  filetype plugin indent on
+  syntax enable
+  set t_ut=
+  set t_Co=256
+
 endif
 
-" 不足プラグインの自動インストール
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
+" Dein のヘルプを表示できるように
+silent! execute 'helptags' s:dein_repo_dir . '/doc/'
+
 " }}}
 

@@ -1,6 +1,7 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# Unite
 [[plugins]]
 repo = 'Shougo/unite.vim'
 hook_add = '''
@@ -15,10 +16,13 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
+depends = ['Shougo/unite.vim']
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
+depends = ['Shougo/unite.vim']
 
+# VimFiler
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
 hook_add = '''
