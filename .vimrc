@@ -6,9 +6,26 @@ if &compatible
 endif
 
 "-----------------------------------------------------------
-" load defaults.vim
+" defaults
 "-----------------------------------------------------------
-source $VIMRUNTIME/defaults.vim
+set autoindent
+set autoread
+set backspace=indent,eol,start
+set complete=.,w,b,u,t
+set display=truncate
+set formatoptions=tcq
+set history=1000
+set hlsearch
+set incsearch
+set langnoremap
+set laststatus=2
+set mouse=a
+set tags=./tags;,tags
+set ttyfast
+set wildmenu
+
+set directory=~/.vim/tmp
+set backupdir=~/.vim/tmp
 
 
 "-----------------------------------------------------------
@@ -44,7 +61,7 @@ set splitright
 set splitbelow
 
 " 特殊文字を表示
-set lcs=tab:>.,trail:_,extends:>,precedes:<,nbsp:%
+set listchars=tab:>.,trail:_,extends:>,precedes:<,nbsp:%
 set list
 
 " 入力時に対応する括弧やブレースを表示する
@@ -63,9 +80,6 @@ set hidden
 
 " バッファが変更されているとき、コマンドをエラーにするのでなく、保存するかどうか確認を求める
 set confirm
-
-" 他で書き換えられたら自動で読み直す
-set autoread
 
 
 "-----------------------------------------------------------
@@ -100,14 +114,6 @@ augroup END
 
 " QuickFix
 autocmd QuickFixCmdPost *grep*,make cwindow
-
-
-"-----------------------------------------------------------
-" misc
-"-----------------------------------------------------------
-" swapファイルとbackupファイル
-set directory=~/.vim/tmp
-set backupdir=~/.vim/tmp
 
 
 "------------------------------------------------------------
@@ -153,12 +159,12 @@ if dein#load_state(s:dein_dir)
     call dein#install()
   endif
 
-  filetype plugin indent on
-  syntax enable
-  set t_ut=
-  set t_Co=256
-
 endif
+
+filetype plugin indent on
+syntax enable
+set t_ut=
+set t_Co=256
 
 " Dein のヘルプを表示できるように
 silent! execute 'helptags' s:dein_repo_dir . '/doc/'
