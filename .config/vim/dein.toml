@@ -42,6 +42,14 @@ hook_add = '''
     au FileType vimfiler inoremap <silent> <buffer> <expr> <C-l> vimfiler#do_action('vsplit')
 '''
 
+# Git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+
+
 
 # Colors
 [[plugins]]
