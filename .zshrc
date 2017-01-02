@@ -5,7 +5,6 @@ fi
 
 ########################################
 # 環境変数
-#export LANG=ja_JP.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -188,8 +187,6 @@ alias less='less --tabs=4'
 
 alias vi='vim'
 
-#alias ctags='/usr/local/bin/ctags'
-
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
@@ -228,22 +225,12 @@ case ${OSTYPE} in
         ;;
 esac
 
-# vim:set ft=zsh:
-
-##########################################
-# Android SDK
-#export PATH=$PATH:/Applications/adt-bundle-mac/sdk/platform-tools
-
 # local bin
 export PATH=$PATH:~/bin
 #
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
-
-# for rbenv
-#export PATH=$HOME/.rbenv/bin:$PATH
-#eval "$(rbenv init - zsh)"
 
 # for golang
 if [ -x "`which go`" ]; then
