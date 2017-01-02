@@ -148,6 +148,10 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'cohama/agit.vim'
 
+# EditorConfig
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
 # Markdown
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
