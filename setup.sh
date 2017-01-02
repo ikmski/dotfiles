@@ -7,6 +7,7 @@ DOT_FILES=(
  .zshrc
  .gitconfig
  .git_template/
+ .config/
  .tmux.conf
 )
 
@@ -27,5 +28,5 @@ do
   fi
 done
 
-mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/tmp
+mkdir -p ~/.cache
