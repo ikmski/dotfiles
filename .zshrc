@@ -252,3 +252,8 @@ if [ -x "`which go`" ]; then
     export PATH=$HOME/Develop/go/bin:$GOROOT/bin:$PATH
 fi
 
+# peco
+if [ -x "`which peco`" ]; then
+    source $XDG_CONFIG_HOME/peco/peco_functions.sh
+fi
+
