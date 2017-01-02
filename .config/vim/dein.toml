@@ -1,6 +1,5 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-
 # Unite
 [[plugins]]
 repo = 'Shougo/unite.vim'
@@ -159,7 +158,18 @@ repo = 'kannokanno/previm'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 
-
+# Go
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = '''
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_fields = 1
+    let g:go_highlight_types = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
+    let g:go_fmt_command = "goimports"
+'''
 
 
 # Colors
