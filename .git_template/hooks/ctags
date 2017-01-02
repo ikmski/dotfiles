@@ -1,3 +1,9 @@
 #!/bin/sh
-#/usr/local/bin/ctags -R . &
+set -e
+PATH="/usr/local/bin:$PATH"
+dir=$(git rev-parse --git-dir)
+
+git ls-files | \
+    ctags -f "$dir/tags" \
+    --tag-relative --recurse --sort=yes  --append=no
 
