@@ -16,11 +16,6 @@ alias cp='cp -ip'
 #
 PS1='[\u \W]\$ '
 
-
-##########################################
-# Android SDK
-#export PATH=$PATH:/Applications/android-sdk-macosx/platform-tools
-
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
