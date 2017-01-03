@@ -1,14 +1,18 @@
 #!/bin/bash
 
+mkdir -p ~/.config
+mkdir -p ~/.cache
+mkdir -p ~/.vim/tmp
+
 DOT_FILES=(
  .vimrc
- .bash_profile
- .bashrc
  .zshrc
  .gitconfig
  .git_template/
- .config/
+ .config/vim/
+ .config/peco/
  .tmux.conf
+ .my.cnf
 )
 
 for file in ${DOT_FILES[@]}
@@ -28,5 +32,3 @@ do
   fi
 done
 
-mkdir -p ~/.vim/tmp
-mkdir -p ~/.cache
