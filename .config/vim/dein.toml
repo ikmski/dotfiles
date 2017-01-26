@@ -21,11 +21,6 @@ depends = ['Shougo/unite.vim']
 repo = 'Shougo/neomru.vim'
 depends = ['Shougo/unite.vim']
 
-# Vimproc
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
 # VimFiler
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
