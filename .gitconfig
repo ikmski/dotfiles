@@ -3,17 +3,24 @@
     email = ikeda.masaki@gmail.com
 [core]
     excludesfile = ~/.gitignore_global
-    editor = vim -u NONE -N
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
+    editor = vim
+    autocrlf = false
+    ignorecase = false
+[color]
+    ui = true
+[init]
+    templatedir = ~/.git_template
+[commit]
+    template = ~/.git_template/commit_template
+[push]
+    default = simple
 [filter "media"]
     clean = git-media-clean %f
     smudge = git-media-smudge %f
 [filter "lfs"]
+    clean = git-lfs clean -- %f
     smudge = git-lfs smudge --skip %f
-[color]
-    ui = true
+    required = true
 [alias]
     co = checkout
     st = status
@@ -21,10 +28,6 @@
     ci = commit
     tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order --all
     fe = fetch --prune
-[init]
-    templatedir = ~/.git_template
-[push]
-    default = simple
 [ghq]
     root = ~/.ghq
     root = ~/Develop/go/src

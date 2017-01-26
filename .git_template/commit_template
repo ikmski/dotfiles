@@ -1,0 +1,13 @@
+
+
+# prefix cheat-sheet
+# ✨ :sparkles: [add]     新規（ファイル）機能追加
+# 👍 :+1:       [update]  機能修正（バグではない）
+# 🐛 :bug:      [fix]     バグ修正
+# 💥 :boom:     [hotfix]  クリティカルなバグ修正
+# 🎨 :art:      [change]  仕様変更
+# 💨 :dash:     [disable] 無効化（コメントアウト等）
+# ♻️  :recycle:  [clean]   整理（リファクタリング等）
+# 🔥 :fire:     [remove]  削除（ファイル）
+# 🚿 :shower:   [revert]  変更取り消し
+# 👊 :punch:    [typo]    スペルミス修正
