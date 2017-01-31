@@ -149,7 +149,7 @@ repo = 'editorconfig/editorconfig-vim'
 
 # Markdown
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
+repo = 'tpope/vim-markdown'
 
 [[plugins]]
 repo = 'kannokanno/previm'
