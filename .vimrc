@@ -19,7 +19,7 @@ set hlsearch
 set incsearch
 set langnoremap
 set laststatus=2
-set mouse=a
+"set mouse=a
 set tags=./tags;,tags
 set ttyfast
 set wildmenu
@@ -170,6 +170,10 @@ set t_Co=256
 silent! execute 'helptags' s:dein_repo_dir . '/doc/'
 
 " }}}
+
+" コンシール
+set conceallevel=0
+let g:vim_json_syntax_conceal=0
 
 
 "-----------------------------------------------------------
