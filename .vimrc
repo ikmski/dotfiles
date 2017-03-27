@@ -179,6 +179,8 @@ augroup MyAutoCmd
     " QuickFix
     autocmd QuickFixCmdPost *grep*,make cwindow
 
+    " Lint C#
+    autocmd BufWritePost *.cs silent :!~/.config/vim/astyle_cs.sh % 1>/dev/null 2>/dev/null
 augroup END
 
 "-----------------------------------------------------------
