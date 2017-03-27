@@ -8,8 +8,6 @@
     ignorecase = false
 [color]
     ui = true
-[init]
-    templatedir = ~/.git_template
 [commit]
     template = ~/.git_template/commit_template
 [push]
@@ -29,6 +27,3 @@
     ci = commit
     tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order --all
     fe = fetch --prune
-[ghq]
-    root = ~/.ghq
-    root = ~/Develop/go/src
