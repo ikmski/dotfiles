@@ -50,8 +50,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-" 保存時にtabをスペースに変換する
-autocmd BufWritePre * :%s/\s\+$//ge
 
 " コメント文字列
 set comments+=sr:/**
@@ -111,9 +109,6 @@ nnoremap <silent>bb :b#<CR>
 augroup MyAutoCmd
   autocmd!
 augroup END
-
-" QuickFix
-autocmd QuickFixCmdPost *grep*,make cwindow
 
 
 "------------------------------------------------------------
@@ -175,6 +170,16 @@ silent! execute 'helptags' s:dein_repo_dir . '/doc/'
 set conceallevel=0
 let g:vim_json_syntax_conceal=0
 
+"-----------------------------------------------------------
+" autocommand
+"-----------------------------------------------------------
+augroup MyAutoCmd
+    " 保存時にtabをスペースに変換する
+    autocmd BufWritePre * :%s/\s\+$//ge
+    " QuickFix
+    autocmd QuickFixCmdPost *grep*,make cwindow
+
+augroup END
 
 "-----------------------------------------------------------
 " color scheme
