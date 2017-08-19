@@ -1,13 +1,28 @@
 
 
-# prefix cheat-sheet
-# ✨ :sparkles: [add]     新規（ファイル）機能追加
-# 👍 :+1:       [update]  機能修正（バグではない）
-# 🐛 :bug:      [fix]     バグ修正
-# 💥 :boom:     [hotfix]  クリティカルなバグ修正
-# 🎨 :art:      [change]  仕様変更
-# 💨 :dash:     [disable] 無効化（コメントアウト等）
-# ♻️  :recycle:  [clean]   整理（リファクタリング等）
-# 🔥 :fire:     [remove]  削除（ファイル）
-# 🚿 :shower:   [revert]  変更取り消し
-# 👊 :punch:    [typo]    スペルミス修正
+## commit message cheat-sheet
+#   idiom                       example
+# - fix A in B                  fix typo in docs
+# - add A to B                  add .js to import
+# - remove A from B             remove debug from tests
+# - use A                       use stub in testing
+# - update A to B               update plugin to v1.6
+# - support for                 add support for callbacks
+# - make it A                   make it possible to have IDs
+# - make sure (that) A          make sure all packages rebuild
+# - move A to B                 move strings to strings.js
+# - don't use A                 don't use "assert_not_null"
+# - check for A                 check for weak dependency correctly
+# - change A to B               change copyright to 2017
+# - allow A to B                allow the user to drag faster
+# - set A to B                  set default kernel to Gaussian
+# - convert A to B              convert time to string
+# - rename A to B               rename hoge to fuga
+# - avoid A to B                avoid method call to compact
+#
+## emoji sheet-sheet
+# ✨ :sparkles:          👍 :+1:                 🎉 :tada:
+# 🔥 :fire:              🐛 :bug:                🚀 :rocket:
+# 👊 :punch:             ✅  :white_check_mark:  📝 :memo:
+# ♻️  :recycle:           👮 :cop:                🚧 :construction:
+#
