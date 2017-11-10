@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'ikmski/helloworld-vim'
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
 # Unite
 [[plugins]]
