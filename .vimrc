@@ -8,6 +8,9 @@ endif
 "-----------------------------------------------------------
 " defaults
 "-----------------------------------------------------------
+filetype plugin indent on
+syntax enable
+
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -27,6 +30,8 @@ set wildmenu
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
 
+set t_ut=
+set t_Co=256
 
 "-----------------------------------------------------------
 " encoding
@@ -112,61 +117,71 @@ augroup END
 
 
 "------------------------------------------------------------
-" Dein
+" vim-plug
 "------------------------------------------------------------
-" dein settings {{{
-" dein自体の自動インストール
-let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:config_home = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
+call plug#begin('~/.vim/plugged')
 
-let s:dein_dir = s:cache_home . '/dein'
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+" Unite
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR> " バッファ一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir file -buffer-name=files<CR> " ファイル一覧
+nnoremap <silent> ,uo :<C-u>Unite outline<CR> " アウトライン
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR> " 最近使用したファイル一覧
+nnoremap <silent> ,uy :<C-u>Unite history/yank<CR> " ヤンク一覧
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
 
-" dein.vim がなければ github から落としてくる
-if !isdirectory(s:dein_dir)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
+" Filer
+Plug 'cocopon/vaffle.vim'
+nnoremap <silent> ,fi :<C-u>Vaffle<CR>
 
-let &runtimepath = &runtimepath . "," . s:dein_repo_dir
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'cohama/agit.vim'
 
-" プラグインリストを収めた TOML ファイル
-let s:rc_dir    = s:config_home . '/vim/'
-let s:toml      = s:rc_dir . 'dein.toml'
-let s:lazy_toml = s:rc_dir . 'dein_lazy.toml'
+" Markdown
+Plug 'tpope/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
 
-" 設定開始
-if dein#load_state(s:dein_dir)
+" Go
+Plug 'fatih/vim-go'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
 
-  " 第二引数に toml ファイルを追加しておく
-  " toml に変更があった場合にキャッシュの自動削除が動くようになる。
-  call dein#begin(s:dein_dir, [$MYVIMRC, s:toml, s:lazy_toml])
+" Syntax Check
+Plug 'editorconfig/editorconfig-vim'
 
-  " プラグイン読み込み＆キャッシュ作成
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+Plug 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-    " 設定終了
-  call dein#end()
-  call dein#save_state()
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-  " 不足プラグインの自動インストール
-  if dein#check_install()
-    call dein#install()
-  endif
+Plug 'ikmski/astyle-vim'
 
-endif
+" Color Scheme
+Plug 'w0ng/vim-hybrid'
+set background=dark
 
-filetype plugin indent on
-syntax enable
-set t_ut=
-set t_Co=256
+call plug#end()
 
-" Dein のヘルプを表示できるように
-silent! execute 'helptags' s:dein_repo_dir . '/doc/'
-
-" }}}
-
+"------------------------------------------------------------
 " コンシール
+"------------------------------------------------------------
 set conceallevel=0
 let g:vim_json_syntax_conceal=0
 
