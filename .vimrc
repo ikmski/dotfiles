@@ -133,6 +133,33 @@ nnoremap <silent> ,um :<C-u>Unite file_mru<CR> " 最近使用したファイル�
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR> " ヤンク一覧
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
 
+" complement
+Plug 'Shougo/neocomplete.vim'
+let g:acp_enableAtStartup = 0 " Disable AutoComplPop.
+let g:neocomplete#enable_at_startup = 1 " Use neocomplete.
+let g:neocomplete#enable_smart_case = 1 " Use smartcase.
+let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax keyword length.
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
 " Filer
 Plug 'cocopon/vaffle.vim'
 nnoremap <silent> ,fi :<C-u>Vaffle<CR>
