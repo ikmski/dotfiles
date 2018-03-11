@@ -135,10 +135,12 @@ nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
 
 " complement
 Plug 'Shougo/neocomplete.vim'
+set completeopt-=preview
 let g:acp_enableAtStartup = 0 " Disable AutoComplPop.
 let g:neocomplete#enable_at_startup = 1 " Use neocomplete.
 let g:neocomplete#enable_smart_case = 1 " Use smartcase.
 let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax keyword length.
+let g:neocomplete#enable_auto_close_preview = 1
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
@@ -150,6 +152,11 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" omni completion
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
 
 " Plugin key-mappings.
 inoremap <expr><C-g> neocomplete#undo_completion()
