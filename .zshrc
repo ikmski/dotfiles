@@ -70,6 +70,7 @@ setopt hist_reduce_blanks # ヒストリに保存するときに余分なスペ�
 setopt auto_menu # 補完候補が複数あるときに自動的に一覧表示する
 setopt magic_equal_subst # = の後はパス名として補完する
 
+setopt prompt_subst
 
 ########################################
 # Key bindings
@@ -92,73 +93,26 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 
 
 ########################################
-# プロンプト
-#PS1='[%n %1~]$ '
+# Prompt
 
+zstyle ":vcs_info:*" enable git
+zstyle ':vcs_info:*' use-simple true
+zstyle ":vcs_info:*" max-exports 2
+zstyle ":vcs_info:*" formats "%F{green}%u%c(%s)-[%b]%f"
+zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{cyan}"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
 
-#
-## begin VCS
-#zstyle ":vcs_info:*" enable git svn hg bzr
-#zstyle ":vcs_info:*" formats "(%s)-[%b]"
-#zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
-#zstyle ":vcs_info:(svn|bzr):*" branchformat "%b:r%r"
-#zstyle ":vcs_info:bzr:*" use-simple true
-#
-#zstyle ":vcs_info:*" max-exports 6
-#
-#setopt prompt_subst
-#function vcs_echo {
-#    local st branch color
-#    STY= LANG=en_US.UTF-8 vcs_info
-#    st=`git status 2> /dev/null`
-#    if [[ -z "$st" ]]; then return; fi
-#    branch="$vcs_info_msg_0_"
-#    color=`get-branch-status` #色だけ返ってくる
-#    echo "%{$color%}(%{$branch%})%{$reset_color%}"
-#}
-#function get-branch-status {
-#    local res color
-#    output=`git status --short 2> /dev/null`
-#    if [ -z "$output" ]; then
-#        res=':' # status Clean
-#        color='%{'${fg[green]}'%}'
-#    elif [[ $output =~ "[\n]?\?\? " ]]; then
-#        res='?:' # Untracked
-#        color='%{'${fg[yellow]}'%}'
-#    elif [[ $output =~ "[\n]? M " ]]; then
-#        res='M:' # Modified
-#        color='%{'${fg[red]}'%}'
-#    else
-#        res='A:' # Added to commit
-#        color='%{'${fg[cyan]}'%}'
-#    fi
-#    # echo ${color}${res}'%{'${reset_color}'%}'
-#    echo ${color} # 色だけ返す
-#}
-## end VCS
-#
-#
-#PROMPT=""
-#PROMPT+="
-#"
-#PROMPT+='%F{blue}%d%f `vcs_echo`'
-#PROMPT+="
-#"
-#PROMPT+='[%n@%m] '
-#PROMPT+='%(?.$.%F{red}$%f) '
-#
-#
-#RPROMPT=""
-#RPROMPT+="[%D %*]"
-#
-#########################################
-## オプション
-#########################################
-## キーバインド
-#
-## ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-#bindkey '^R' history-incremental-pattern-search-backward
-#
+precmd () { vcs_info }
+PROMPT='%F{blue}%d%f $vcs_info_msg_0_'
+PROMPT+="
+"
+PROMPT+='[%n@%m] '
+PROMPT+='%(?.$.%F{red}$%f) '
+
+RPROMPT=""
+RPROMPT+="[%D %*]"
 
 ########################################
 # エイリアス
