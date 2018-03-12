@@ -178,7 +178,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 
 " Filer
 Plug 'cocopon/vaffle.vim'
-nnoremap <silent> ,fi :<C-u>Vaffle<CR>
+nnoremap <silent> ,fi :<C-u>Vaffle %:p:h<CR>
 
 " Git
 Plug 'tpope/vim-fugitive'
