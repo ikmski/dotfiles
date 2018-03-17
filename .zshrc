@@ -95,26 +95,25 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 ########################################
 # Prompt
 
-zstyle ":vcs_info:*" enable git
+zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' use-simple true
-zstyle ":vcs_info:*" max-exports 2
-zstyle ":vcs_info:*" formats "%F{green}%u%c(%s)-[%b]%f"
-zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
+zstyle ':vcs_info:*' max-exports 2
+zstyle ':vcs_info:*' formats "%F{green}%u%c(%s)-[%b]%f"
+zstyle ':vcs_info:*' actionformats "%F{green}%u%c(%s)-[%b|%a]%f"
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{cyan}"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
 
 precmd () { vcs_info }
+
 PROMPT="
 "
 PROMPT+='%F{blue}%d%f $vcs_info_msg_0_'
 PROMPT+="
 "
-PROMPT+='[%n@%m] '
-PROMPT+='%(?.$.%F{red}$%f) '
+PROMPT+='[%n] %(?.$.%F{red}$%f) '
 
-RPROMPT=""
-RPROMPT+="[%D %*]"
+RPROMPT="[%D %*]"
 
 ########################################
 # エイリアス
