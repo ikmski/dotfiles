@@ -9,7 +9,7 @@
 [color]
     ui = true
 [init]
-    templatedir = ~/.git_template
+    #templatedir = ~/.git_template
 [commit]
     template = ~/.git_template/commit_template
 [push]
