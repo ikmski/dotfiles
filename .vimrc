@@ -74,6 +74,15 @@ set matchtime=1
 " カーソルがのったときに対応する括弧をハイライトしない
 let loaded_matchparen=1
 
+"-----------------------------------------------------------
+" StatusLine (Left)
+"-----------------------------------------------------------
+set statusline+=%t " ファイル名表示
+set statusline+=%y " ファイルタイプ
+set statusline+=%m " 変更チェック表示
+set statusline+=%r " 読み込み専用かどうか表示
+set statusline+=%h " ヘルプページなら[HELP]と表示
+set statusline+=%w " プレビューウインドウなら[Prevew]と表示
 
 "-----------------------------------------------------------
 " buffer
@@ -83,7 +92,6 @@ set hidden
 
 " バッファが変更されているとき、コマンドをエラーにするのでなく、保存するかどうか確認を求める
 set confirm
-
 
 "-----------------------------------------------------------
 " key map
@@ -205,6 +213,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
 set statusline+=%{ALEGetStatusLine()}
 let g:ale_sign_column_always = 1
+let g:ale_statusline_format = [' ⨉ %d ', ' ⚠ %d ', ' ⬥ ok ']
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -221,6 +230,13 @@ call plug#end()
 "------------------------------------------------------------
 set conceallevel=0
 let g:vim_json_syntax_conceal=0
+
+"-----------------------------------------------------------
+" StatusLine (Write)
+"-----------------------------------------------------------
+set statusline+=%= " これ以降は右寄せ表示
+set statusline+=[ENC=%{&fileencoding}] " file encoding
+set statusline+=[LOW=%l/%L] " 現在行数/全行数
 
 "-----------------------------------------------------------
 " autocommand
