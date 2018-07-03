@@ -214,6 +214,10 @@ Plug 'w0rp/ale'
 set statusline+=%{ALEGetStatusLine()}
 let g:ale_sign_column_always = 1
 let g:ale_statusline_format = [' ⨉ %d ', ' ⚠ %d ', ' ⬥ ok ']
+let g:ale_linters = {
+\   'cs': ['mcs'],
+\}
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
