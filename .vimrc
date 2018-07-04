@@ -1,31 +1,22 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if &compatible
-   set nocompatible
-endif
 
 "-----------------------------------------------------------
 " defaults
 "-----------------------------------------------------------
-filetype plugin indent on
-syntax enable
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
 
 set autoindent
 set autoread
-set backspace=indent,eol,start
 set complete=.,w,b,u,t
-set display=truncate
 set formatoptions=tcq
-set history=1000
 set hlsearch
-set incsearch
 set langnoremap
 set laststatus=2
-"set mouse=a
 set tags=./tags;,tags
 set ttyfast
-set wildmenu
 
 set directory=~/.vim/tmp
 set backupdir=~/.vim/tmp
@@ -115,14 +106,12 @@ nnoremap <silent>bn :bnext<CR>
 " 直前のバッファを開く
 nnoremap <silent>bb :b#<CR>
 
-
 "-----------------------------------------------------------
 " auto command
 "-----------------------------------------------------------
 augroup MyAutoCmd
   autocmd!
 augroup END
-
 
 "------------------------------------------------------------
 " vim-plug
