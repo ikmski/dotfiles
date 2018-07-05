@@ -167,6 +167,12 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 Plug 'cocopon/vaffle.vim'
 nnoremap <silent> ,fi :<C-u>Vaffle %:p:h<CR>
 
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+let g:fzf_layout = { 'up': '~40%' }
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/agit.vim'

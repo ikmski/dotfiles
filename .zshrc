@@ -166,3 +166,7 @@ if [ -x "`which peco`" ]; then
     source $XDG_CONFIG_HOME/peco/peco_functions.sh
 fi
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--layout=reverse'
+
