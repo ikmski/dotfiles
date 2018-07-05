@@ -172,6 +172,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 let g:fzf_layout = { 'up': '~40%' }
+command!      -bang -nargs=? -complete=dir    FZFiles   call fzf#vim#gitfiles(<q-args>, {'options' : '--reverse'}, <bang>0)
+command! -bar -bang -nargs=? -complete=buffer FZBuffers call fzf#vim#buffers(<q-args>, {'options' : '--reverse'}, <bang>0)
 
 " Git
 Plug 'tpope/vim-fugitive'
