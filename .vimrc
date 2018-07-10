@@ -201,10 +201,17 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
-let g:ale_statusline_format = [' ⨉ %d ', ' ⚠ %d ', ' ⬥ ok ']
 let g:ale_linters = {
 \   'cs': ['mcs'],
 \}
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+    let l:status_str = l:counts.total == 0 ? ' OK ' : printf(' W: %d  E: %d ', all_non_errors, all_errors)
+    return l:status_str
+endfunction
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -233,7 +240,7 @@ set statusline+=%r " 読み込み専用かどうか表示
 set statusline+=%h " ヘルプページなら[HELP]と表示
 set statusline+=%w " プレビューウインドウなら[Prevew]と表示
 
-set statusline+=%{ALEGetStatusLine()}
+set statusline+=%{LinterStatus()}
 
 set statusline+=%= " これ以降は右寄せ表示
 set statusline+=[ENC=%{&fileencoding}] " file encoding
