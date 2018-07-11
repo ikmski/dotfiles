@@ -8,6 +8,8 @@
 unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
+set mouse=
+
 set autoindent
 set autoread
 set complete=.,w,b,u,t
