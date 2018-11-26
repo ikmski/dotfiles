@@ -99,6 +99,49 @@ nnoremap <silent>bn :bnext<CR>
 nnoremap <silent>bb :b#<CR>
 
 "-----------------------------------------------------------
+" completion
+"-----------------------------------------------------------
+set completeopt=menuone,longest,preview
+set dictionary=~/.config/vim/dict/words
+let s:compl_key_dict = {
+      \ char2nr("\<C-l>"): "\<C-x>\<C-l>",
+      \ char2nr("\<C-n>"): "\<C-x>\<C-n>",
+      \ char2nr("\<C-p>"): "\<C-x>\<C-p>",
+      \ char2nr("\<C-k>"): "\<C-x>\<C-k>",
+      \ char2nr("\<C-t>"): "\<C-x>\<C-t>",
+      \ char2nr("\<C-i>"): "\<C-x>\<C-i>",
+      \ char2nr("\<C-]>"): "\<C-x>\<C-]>",
+      \ char2nr("\<C-f>"): "\<C-x>\<C-f>",
+      \ char2nr("\<C-d>"): "\<C-x>\<C-d>",
+      \ char2nr("\<C-v>"): "\<C-x>\<C-v>",
+      \ char2nr("\<C-u>"): "\<C-x>\<C-u>",
+      \ char2nr("\<C-o>"): "\<C-x>\<C-o>",
+      \ char2nr('s'): "\<C-x>s",
+      \ char2nr("\<C-s>"): "\<C-x>s"
+      \}
+" 表示メッセージ
+let s:hint_i_ctrl_x_msg = join([
+      \ '<C-l>: While lines',
+      \ '<C-n>: keywords in the current file',
+      \ "<C-k>: keywords in 'dictionary'",
+      \ "<C-t>: keywords in 'thesaurus'",
+      \ '<C-i>: keywords in the current and included files',
+      \ '<C-]>: tags',
+      \ '<C-f>: file names',
+      \ '<C-d>: definitions or macros',
+      \ '<C-v>: Vim command-line',
+      \ "<C-u>: User defined completion ('completefunc')",
+      \ "<C-o>: omni completion ('omnifunc')",
+      \ "s: Spelling suggestions ('spell')"
+      \], "\n")
+function! s:hint_i_ctrl_x() abort
+  echo s:hint_i_ctrl_x_msg
+  let c = getchar()
+  return get(s:compl_key_dict, c, nr2char(c))
+endfunction
+inoremap <expr> <C-x>  <SID>hint_i_ctrl_x()
+
+"-----------------------------------------------------------
 " auto command
 "-----------------------------------------------------------
 augroup MyAutoCmd
@@ -122,48 +165,12 @@ nnoremap <silent> ,um :<C-u>Unite file_mru<CR> " 最近使用したファイル�
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR> " ヤンク一覧
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
 
-" complement
-Plug 'Shougo/neocomplete.vim'
-set completeopt-=preview
-let g:acp_enableAtStartup = 0 " Disable AutoComplPop.
-let g:neocomplete#enable_at_startup = 1 " Use neocomplete.
-let g:neocomplete#enable_smart_case = 1 " Use smartcase.
-let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax keyword length.
-let g:neocomplete#enable_auto_close_preview = 1
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-    \ }
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" omni completion
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-" Plugin key-mappings.
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
+" snippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
-imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " Filer
 Plug 'cocopon/vaffle.vim'

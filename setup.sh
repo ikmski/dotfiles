@@ -6,6 +6,7 @@ mkdir -p ~/.vim/tmp/
 
 DOT_FILES=(
  .config/peco
+ .config/vim
  .git_template
  .bashrc
  .bash_profile
