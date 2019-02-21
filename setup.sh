@@ -6,7 +6,11 @@ mkdir -p ~/.cache/
 mkdir -p ~/.vim/tmp/
 
 DOT_FILES=(
+ .config/memo
  .config/peco
+ .config/todo
+ .config/trans
+ .config/twitter-cli
  .config/vim
  .git_template
  .bashrc
