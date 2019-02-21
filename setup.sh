@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p ~/develop/
 mkdir -p ~/.config/
 mkdir -p ~/.cache/
 mkdir -p ~/.vim/tmp/

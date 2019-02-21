@@ -157,8 +157,8 @@ export PATH=/usr/local/bin:$PATH
 # for golang
 if [ -x "`which go`" ]; then
     export GOROOT=`go env GOROOT`
-    export GOPATH=$HOME/Develop/go
-    export PATH=$HOME/Develop/go/bin:$GOROOT/bin:$PATH
+    export GOPATH=$HOME/develop/go
+    export PATH=$HOME/develop/go/bin:$GOROOT/bin:$PATH
 fi
 
 # peco
