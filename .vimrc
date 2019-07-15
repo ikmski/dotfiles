@@ -195,23 +195,14 @@ Plug 'tpope/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 
-" Go
-Plug 'fatih/vim-go'
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-
 " Syntax Check
 Plug 'editorconfig/editorconfig-vim'
+Plug 'ikmski/astyle-vim'
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
-\   'cs': ['mcs'],
+\   'cs': ['OmniSharp'],
 \}
 
 function! LinterStatus() abort
@@ -224,8 +215,6 @@ endfunction
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-Plug 'ikmski/astyle-vim'
 
 " LSP
 Plug 'prabirshrestha/async.vim'
@@ -244,6 +233,22 @@ if executable('go-langserver')
         \ })
     autocmd BufWritePre *.go LspDocumentFormatSync
 endif
+
+" Go
+Plug 'fatih/vim-go'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
+" C#
+Plug 'OmniSharp/omnisharp-vim'
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_selector_ui = 'fzf'
 
 " Color Scheme
 Plug 'w0ng/vim-hybrid'
