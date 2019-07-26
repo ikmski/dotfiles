@@ -25,6 +25,9 @@
     tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order
     tra = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order --all
     fe = fetch --prune
+    fc = !git branch | fzf | xargs git checkout
+    fa = !git status -s | fzf -m | awk '{print $NF}' | xargs git add
+    fm = !git branch -r | fzf | xargs git merge --no-ff --no-commit
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [ghq]
