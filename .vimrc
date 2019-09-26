@@ -183,6 +183,18 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'up': '~100%' }
 command!      -bang -nargs=? -complete=dir    FZFiles   call fzf#vim#gitfiles(<q-args>, {'options' : '--reverse'}, <bang>0)
 command! -bar -bang -nargs=? -complete=buffer FZBuffers call fzf#vim#buffers(<q-args>, {'options' : '--reverse'}, <bang>0)
+
+command! -bang -nargs=* Pt
+    \ call fzf#vim#grep(
+    \   'pt --column --ignore=.git --global-gitignore '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview({ 'dir': s:find_git_root() }),
+    \   <bang>0)
+
+function! s:find_git_root()
+    return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
 nnoremap <silent> ,ff :<C-u>FZFiles<CR>
 nnoremap <silent> ,fb :<C-u>FZBuffers<CR>
 
