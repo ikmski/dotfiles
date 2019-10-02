@@ -186,7 +186,7 @@ command! -bar -bang -nargs=? -complete=buffer FZBuffers call fzf#vim#buffers(<q-
 
 command! -bang -nargs=* Pt
     \ call fzf#vim#grep(
-    \   'pt --column --ignore=.git --global-gitignore '.shellescape(<q-args>), 1,
+    \   'pt --column --ignore=.git --ignore=tags --global-gitignore '.shellescape(<q-args>), 1,
     \   <bang>0 ? fzf#vim#with_preview('up:60%')
     \           : fzf#vim#with_preview({ 'dir': s:find_git_root() }),
     \   <bang>0)
