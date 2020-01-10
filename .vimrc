@@ -177,7 +177,7 @@ Plug 'cocopon/vaffle.vim'
 nnoremap <silent> ,fi :<C-u>Vaffle %:p:h<CR>
 
 " fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 let g:fzf_layout = { 'up': '~100%' }
@@ -206,6 +206,8 @@ Plug 'cohama/agit.vim'
 Plug 'tpope/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
+Plug 'skanehira/preview-markdown.vim'
+let g:preview_markdown_vertical = 1
 
 " Syntax Check
 Plug 'editorconfig/editorconfig-vim'
@@ -215,6 +217,7 @@ Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \   'cs': ['OmniSharp'],
+\   'go': ['gopls'],
 \}
 
 function! LinterStatus() abort
@@ -236,14 +239,28 @@ Plug 'prabirshrestha/vim-lsp'
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_text_edit_enabled = 0
 
-if executable('go-langserver')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'go-langserver',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+if executable('gopls')
+  augroup LspGo
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'go-lang',
+        \ 'cmd': {server_info->['gopls']},
+        \ 'initialization_options': {},
         \ 'whitelist': ['go'],
+        \ 'workspace_config': {'gopls': {
+        \     'staticcheck': v:true,
+        \     'completeUnimported': v:true,
+        \     'caseSensitiveCompletion': v:true,
+        \     'usePlaceholders': v:true,
+        \     'completionDocumentation': v:true,
+        \     'watchFileChanges': v:true,
+        \     'hoverKind': 'SingleLine',
+        \   }},
         \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
+    autocmd FileType go setlocal omnifunc=lsp#complete
+augroup END
 endif
 
 " Go
@@ -255,6 +272,9 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+" LSPに任せる機能をOFFにする
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " C#
 Plug 'OmniSharp/omnisharp-vim'
