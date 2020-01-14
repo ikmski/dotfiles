@@ -102,7 +102,7 @@ nnoremap <silent>bb :b#<CR>
 " completion
 "-----------------------------------------------------------
 set completeopt=menuone,longest,preview
-set dictionary=~/.config/vim/dict/words
+set dictionary=~/.config/vim/dict/words " https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa.txt
 let s:compl_key_dict = {
       \ char2nr("\<C-l>"): "\<C-x>\<C-l>",
       \ char2nr("\<C-n>"): "\<C-x>\<C-n>",
