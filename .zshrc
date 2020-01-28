@@ -161,6 +161,19 @@ if [ -x "`which go`" ]; then
     export PATH=$HOME/develop/go/bin:$GOROOT/bin:$PATH
 fi
 
+# for ruby
+if [ -x "`which rbenv`" ]; then
+    export PATH=$HOME/.rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+fi
+
+# for python
+if [ -x "`which pyenv`" ]; then
+    export PYENV_ROOT="${HOME}/.pyenv"
+    export PATH=${PYENV_ROOT}/bin:$PATH
+    eval "$(pyenv init -)"
+fi
+
 # peco
 if [ -x "`which peco`" ]; then
     source $XDG_CONFIG_HOME/peco/peco_functions.sh
