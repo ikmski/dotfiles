@@ -174,6 +174,12 @@ if [ -x "`which pyenv`" ]; then
     eval "$(pyenv init -)"
 fi
 
+# for java
+if [ -x "`which jenv`" ]; then
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
+fi
+
 # peco
 if [ -x "`which peco`" ]; then
     source $XDG_CONFIG_HOME/peco/peco_functions.sh
@@ -182,4 +188,8 @@ fi
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--layout=reverse'
+
+if [ -f ~/.my_profile ]; then
+    source ~/.my_profile.zsh
+fi
 
