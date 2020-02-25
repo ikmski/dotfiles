@@ -204,7 +204,7 @@ Plug 'cohama/agit.vim'
 
 " Markdown
 Plug 'tpope/vim-markdown'
-Plug 'kannokanno/previm'
+Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'skanehira/preview-markdown.vim'
 let g:preview_markdown_vertical = 1
