@@ -213,55 +213,45 @@ let g:preview_markdown_vertical = 1
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ikmski/astyle-vim'
 
-Plug 'w0rp/ale'
-let g:ale_sign_column_always = 1
-let g:ale_linters = {
-\   'cs': ['OmniSharp'],
-\   'go': ['gopls'],
-\}
+""Plug 'w0rp/ale'
+""let g:ale_sign_column_always = 1
+""let g:ale_linters = {
+""\   'cpp': ['clangd'],
+""\   'cs':  ['OmniSharp'],
+""\   'go':  ['gopls'],
+""\}
 
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-    let l:status_str = l:counts.total == 0 ? ' OK ' : printf(' W: %d  E: %d ', all_non_errors, all_errors)
-    return l:status_str
-endfunction
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+""function! LinterStatus() abort
+""    let l:counts = ale#statusline#Count(bufnr(''))
+""    let l:all_errors = l:counts.error + l:counts.style_error
+""    let l:all_non_errors = l:counts.total - l:all_errors
+""    let l:status_str = l:counts.total == 0 ? ' OK ' : printf(' W: %d  E: %d ', all_non_errors, all_errors)
+""    return l:status_str
+""endfunction
+""
+""nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+""nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " LSP
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_signs_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_text_edit_enabled = 0
 
-if executable('gopls')
-  augroup LspGo
-    au!
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'go-lang',
-        \ 'cmd': {server_info->['gopls']},
-        \ 'initialization_options': {},
-        \ 'whitelist': ['go'],
-        \ 'workspace_config': {'gopls': {
-        \     'staticcheck': v:true,
-        \     'completeUnimported': v:true,
-        \     'caseSensitiveCompletion': v:true,
-        \     'usePlaceholders': v:true,
-        \     'completionDocumentation': v:true,
-        \     'watchFileChanges': v:true,
-        \     'hoverKind': 'SingleLine',
-        \   }},
-        \ })
-    autocmd FileType go setlocal omnifunc=lsp#complete
-augroup END
-endif
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
+
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_signs_enabled = 1
+let g:lsp_text_edit_enabled = 0
+let g:asyncomplete_auto_popup = 0
+let g:asyncomplete_auto_completeopt = 0
+
+command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/.vim/lsp.log')
 
 " Go
 Plug 'fatih/vim-go'
@@ -304,7 +294,7 @@ set statusline+=%r " 読み込み専用かどうか表示
 set statusline+=%h " ヘルプページなら[HELP]と表示
 set statusline+=%w " プレビューウインドウなら[Prevew]と表示
 
-set statusline+=%{LinterStatus()}
+""set statusline+=%{LinterStatus()}
 
 set statusline+=%= " これ以降は右寄せ表示
 set statusline+=[ENC=%{&fileencoding}] " file encoding
