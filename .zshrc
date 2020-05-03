@@ -1,11 +1,17 @@
 # Source global definitions
 if [ -f /etc/zshrc ]; then
     . /etc/zshrc
+elif [ -f /etc/zsh/zshrc ]; then
+    . /etc/zsh/zshrc
 fi
 
 ########################################
 # zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+if [ -d /usr/local/opt/zplug ]; then
+    export ZPLUG_HOME=/usr/local/opt/zplug
+elif [ -d /usr/share/zplug ]; then
+    export ZPLUG_HOME=/usr/share/zplug
+fi
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -153,6 +159,7 @@ export PATH=$PATH:~/bin
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+
 
 # for golang
 if [ -x "`which go`" ]; then
