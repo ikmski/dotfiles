@@ -147,6 +147,7 @@ alias mkdir='mkdir -p'
 alias less='less --tabs=4'
 
 alias vi='vim'
+alias tmux='tmux -2'
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
