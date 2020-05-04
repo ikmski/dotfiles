@@ -117,7 +117,7 @@ PROMPT="
 PROMPT+='%F{blue}%d%f $vcs_info_msg_0_'
 PROMPT+="
 "
-PROMPT+='[%n] %(?.$.%F{red}$%f) '
+PROMPT+='[%n@%m] %(?.$.%F{red}$%f) '
 
 RPROMPT="[%D %*]"
 
