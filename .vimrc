@@ -206,8 +206,6 @@ Plug 'cohama/agit.vim'
 Plug 'tpope/vim-markdown'
 Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
-Plug 'skanehira/preview-markdown.vim'
-let g:preview_markdown_vertical = 1
 
 " Syntax Check
 Plug 'editorconfig/editorconfig-vim'
