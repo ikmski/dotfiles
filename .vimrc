@@ -206,8 +206,6 @@ Plug 'cohama/agit.vim'
 Plug 'tpope/vim-markdown'
 Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
-Plug 'skanehira/preview-markdown.vim'
-let g:preview_markdown_vertical = 1
 
 " Syntax Check
 Plug 'editorconfig/editorconfig-vim'
@@ -241,6 +239,11 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
 
+let g:lsp_settings = {
+\  'clangd': {'disabled': v:true}
+\}
+
+
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
@@ -265,6 +268,13 @@ let g:go_fmt_command = "goimports"
 " LSPに任せる機能をOFFにする
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+
+" C
+Plug 'justmao945/vim-clang'
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ -pedantic-errors'
+"let g:clang_format_auto = 1
+"let g:clang_dotfile = '.clang-format'
 
 " C#
 Plug 'OmniSharp/omnisharp-vim'
