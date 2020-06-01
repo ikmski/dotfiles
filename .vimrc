@@ -206,10 +206,12 @@ Plug 'cohama/agit.vim'
 Plug 'tpope/vim-markdown'
 Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
+Plug 'aklt/plantuml-syntax'
 
 " Syntax Check
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ikmski/astyle-vim'
+Plug 'ikmski/clang-format-vim'
 
 ""Plug 'w0rp/ale'
 ""let g:ale_sign_column_always = 1
