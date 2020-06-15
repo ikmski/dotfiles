@@ -271,6 +271,8 @@ let g:go_fmt_command = "goimports"
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
+Plug 'sebdah/vim-delve'
+
 " C
 Plug 'justmao945/vim-clang'
 let g:clang_c_options = '-std=c11'
