@@ -212,6 +212,7 @@ Plug 'aklt/plantuml-syntax'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ikmski/astyle-vim'
 Plug 'ikmski/clang-format-vim'
+let g:clang_format_style ="{BasedOnStyle: Google, IndentWidth: 4, AccessModifierOffset: -3}"
 
 ""Plug 'w0rp/ale'
 ""let g:ale_sign_column_always = 1
