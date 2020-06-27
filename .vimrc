@@ -206,10 +206,13 @@ Plug 'cohama/agit.vim'
 Plug 'tpope/vim-markdown'
 Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
+Plug 'aklt/plantuml-syntax'
 
 " Syntax Check
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ikmski/astyle-vim'
+Plug 'ikmski/clang-format-vim'
+let g:clang_format_style ="{BasedOnStyle: Google, IndentWidth: 4, AccessModifierOffset: -3}"
 
 ""Plug 'w0rp/ale'
 ""let g:ale_sign_column_always = 1
@@ -268,6 +271,8 @@ let g:go_fmt_command = "goimports"
 " LSPに任せる機能をOFFにする
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+
+Plug 'sebdah/vim-delve'
 
 " C
 Plug 'justmao945/vim-clang'
