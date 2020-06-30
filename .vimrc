@@ -212,7 +212,18 @@ Plug 'aklt/plantuml-syntax'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ikmski/astyle-vim'
 Plug 'ikmski/clang-format-vim'
-let g:clang_format_style ="{BasedOnStyle: Google, IndentWidth: 4, AccessModifierOffset: -3}"
+"Plug '~/develop/ikmski/clang-format-vim'
+let g:clang_format_style_type = ""
+let g:clang_format_style = {
+\   'BasedOnStyle': 'Google',
+\   'IndentWidth': 4,
+\   'AccessModifierOffset': -3,
+\   'AllowShortFunctionsOnASingleLine': v:false,
+\   'ConstructorInitializerAllOnOneLineOrOnePerLine': v:false,
+\   'ConstructorInitializerIndentWidth': 0,
+\   'BreakConstructorInitializers': 'BeforeComma',
+\   'BreakBeforeBraces': 'Mozilla',
+\}
 
 ""Plug 'w0rp/ale'
 ""let g:ale_sign_column_always = 1
@@ -278,6 +289,7 @@ Plug 'sebdah/vim-delve'
 Plug 'justmao945/vim-clang'
 let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ -pedantic-errors'
+let g:clang_diagsopt = ''
 "let g:clang_format_auto = 1
 "let g:clang_dotfile = '.clang-format'
 
