@@ -15,6 +15,7 @@ DOT_FILES=(
  .git_template
  .bashrc
  .bash_profile
+ .Brewfile
  .gitconfig
  .my.cnf
  .tmux.conf
