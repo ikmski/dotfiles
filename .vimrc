@@ -219,6 +219,7 @@ let g:clang_format_style = {
 \   'IndentWidth': 4,
 \   'AccessModifierOffset': -3,
 \   'AllowShortFunctionsOnASingleLine': v:false,
+\   'AllowShortLambdasOnASingleLine': 'Empty',
 \   'ConstructorInitializerAllOnOneLineOrOnePerLine': v:false,
 \   'ConstructorInitializerIndentWidth': 0,
 \   'BreakConstructorInitializers': 'BeforeComma',
