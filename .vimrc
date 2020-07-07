@@ -218,7 +218,7 @@ let g:clang_format_style = {
 \   'BasedOnStyle': 'Google',
 \   'IndentWidth': 4,
 \   'AccessModifierOffset': -3,
-\   'AllowShortFunctionsOnASingleLine': v:false,
+\   'AllowShortFunctionsOnASingleLine': 'InlineOnly',
 \   'AllowShortLambdasOnASingleLine': 'Empty',
 \   'ConstructorInitializerAllOnOneLineOrOnePerLine': v:false,
 \   'ConstructorInitializerIndentWidth': 0,
