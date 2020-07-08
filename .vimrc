@@ -220,6 +220,8 @@ let g:clang_format_style = {
 \   'AccessModifierOffset': -3,
 \   'AllowShortFunctionsOnASingleLine': 'InlineOnly',
 \   'AllowShortLambdasOnASingleLine': 'Empty',
+\   'AllowAllParametersOfDeclarationOnNextLine': v:false,
+\   'BinPackParameters': v:false,
 \   'ConstructorInitializerAllOnOneLineOrOnePerLine': v:false,
 \   'ConstructorInitializerIndentWidth': 0,
 \   'BreakConstructorInitializers': 'BeforeComma',
