@@ -296,6 +296,8 @@ let g:clang_diagsopt = ''
 "let g:clang_format_auto = 1
 "let g:clang_dotfile = '.clang-format'
 
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
 " C#
 Plug 'OmniSharp/omnisharp-vim'
 let g:OmniSharp_server_stdio = 1
