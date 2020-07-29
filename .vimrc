@@ -98,6 +98,9 @@ nnoremap <silent>bn :bnext<CR>
 " 直前のバッファを開く
 nnoremap <silent>bb :b#<CR>
 
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
+
 "-----------------------------------------------------------
 " completion
 "-----------------------------------------------------------
@@ -226,6 +229,7 @@ let g:clang_format_style = {
 \   'ConstructorInitializerIndentWidth': 0,
 \   'BreakConstructorInitializers': 'BeforeComma',
 \   'BreakBeforeBraces': 'Mozilla',
+\   'FixNamespaceComments': v:true,
 \}
 
 ""Plug 'w0rp/ale'
