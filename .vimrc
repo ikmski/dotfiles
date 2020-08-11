@@ -168,13 +168,6 @@ nnoremap <silent> ,um :<C-u>Unite file_mru<CR> " 最近使用したファイル�
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR> " ヤンク一覧
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
 
-" snippet
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
 " Filer
 Plug 'cocopon/vaffle.vim'
 nnoremap <silent> ,fi :<C-u>Vaffle %:p:h<CR>
@@ -234,24 +227,17 @@ let g:clang_format_style = {
 \   'FixNamespaceComments': v:true,
 \}
 
-""Plug 'w0rp/ale'
-""let g:ale_sign_column_always = 1
-""let g:ale_linters = {
-""\   'cpp': ['clangd'],
-""\   'cs':  ['OmniSharp'],
-""\   'go':  ['gopls'],
-""\}
+" Snippet
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-""function! LinterStatus() abort
-""    let l:counts = ale#statusline#Count(bufnr(''))
-""    let l:all_errors = l:counts.error + l:counts.style_error
-""    let l:all_non_errors = l:counts.total - l:all_errors
-""    let l:status_str = l:counts.total == 0 ? ' OK ' : printf(' W: %d  E: %d ', all_non_errors, all_errors)
-""    return l:status_str
-""endfunction
-""
-""nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-""nmap <silent> <C-j> <Plug>(ale_next_wrap)
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 " LSP
 Plug 'prabirshrestha/async.vim'
@@ -262,36 +248,49 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
 
-let g:lsp_settings = {
-\  'clangd': {'disabled': v:true}
-\}
-
-
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_signs_enabled = 1
-let g:lsp_text_edit_enabled = 0
+let g:lsp_text_edit_enabled = 1
+let g:lsp_preview_float = 1
+let g:asyncomplete_popup_delay = 200
 let g:asyncomplete_auto_popup = 0
 let g:asyncomplete_auto_completeopt = 0
+
+let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+let g:lsp_settings = {}
+let g:lsp_settings['clangd'] = { 'disabled': v:true }
+let g:lsp_settings['gopls'] = {
+    \   'workspace_config': {
+    \       'usePlaceholders': v:true,
+    \       'analyses': {
+    \           'fillstruct': v:true,
+    \       },
+    \   },
+    \   'initialization_options': {
+    \       'usePlaceholders': v:true,
+    \       'analyses': {
+    \           'fillstruct': v:true,
+    \       },
+    \   },
+    \}
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> <C-]> <plug>(lsp-definition)
+endfunction
+
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/.vim/lsp.log')
 
 " Go
-Plug 'fatih/vim-go'
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-" LSPに任せる機能をOFFにする
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-
+Plug 'mattn/vim-goimports'
 Plug 'sebdah/vim-delve'
 
 " C
