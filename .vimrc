@@ -212,6 +212,8 @@ Plug 'ikmski/clang-format-vim'
 let g:clang_format_style_type = ""
 let g:clang_format_style = {
 \   'BasedOnStyle': 'Google',
+\   'AlignOperands': v:true,
+\   'AlignTrailingComments': v:true,
 \   'IndentWidth': 4,
 \   'AccessModifierOffset': -3,
 \   'BinPackArguments': v:false,
