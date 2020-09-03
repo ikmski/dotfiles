@@ -340,6 +340,7 @@ set statusline+=%w " プレビューウインドウなら[Prevew]と表示
 set statusline+=%= " これ以降は右寄せ表示
 set statusline+=[ENC=%{&fileencoding}] " file encoding
 set statusline+=[LOW=%l/%L] " 現在行数/全行数
+set statusline+=[COL=%c]    " 現在列数
 
 "-----------------------------------------------------------
 " autocommand
