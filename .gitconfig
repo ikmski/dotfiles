@@ -9,6 +9,7 @@
 [color]
     ui = true
 [init]
+	defaultBranch = main
     #templatedir = ~/.git_template
 [commit]
     template = ~/.git_template/commit_template
