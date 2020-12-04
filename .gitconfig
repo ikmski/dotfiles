@@ -27,7 +27,7 @@
     ci = commit
     tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order
     tra = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order --all
-    ld = log --diff-filter=D --summary
+    ld = log --diff-filter=DR --summary
     fe = fetch --prune
     fc = !git branch | fzf | xargs git checkout
     fa = !git status -s | fzf -m | awk '{print $NF}' | xargs git add
