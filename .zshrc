@@ -149,6 +149,10 @@ alias less='less --tabs=4'
 alias vi='vim'
 alias tmux='tmux -2'
 
+# for Docker
+alias dockerf='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1}'\'' | xargs -o docker'
+alias dockerx='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1 " sh"}'\'' | xargs -o docker exec -it'
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
