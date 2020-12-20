@@ -12,6 +12,11 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
 $ brew bundle --global
 ```
 
+### Update Brewfile
+```
+$ brew bundle dump --global --force
+```
+
 ## Install zsh plugins
 ```
 $ zplug install
