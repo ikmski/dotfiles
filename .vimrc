@@ -197,6 +197,7 @@ nnoremap <silent> ,fb :<C-u>FZBuffers<CR>
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/agit.vim'
+Plug 'iberianpig/tig-explorer.vim'
 
 " Markdown
 Plug 'tpope/vim-markdown'
