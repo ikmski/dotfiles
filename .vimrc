@@ -169,8 +169,8 @@ nnoremap <silent> ,uy :<C-u>Unite history/yank<CR> " ヤンク一覧
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
 
 " Filer
-Plug 'cocopon/vaffle.vim'
-nnoremap <silent> ,fi :<C-u>Vaffle %:p:h<CR>
+Plug 'lambdalisue/fern.vim'
+nnoremap <silent> ,fi :<C-u>Fern . -reveal=% -wait<CR>
 
 " fzf
 Plug '/usr/local/opt/fzf'
