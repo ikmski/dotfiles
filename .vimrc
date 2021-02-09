@@ -171,6 +171,7 @@ nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
 " Filer
 Plug 'lambdalisue/fern.vim'
 nnoremap <silent> ,fi :<C-u>Fern . -reveal=% -wait<CR>
+nnoremap <silent> ,fc :<C-u>Fern %:h -reveal=% -wait<CR>
 
 " fzf
 Plug '/usr/local/opt/fzf'
