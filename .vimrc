@@ -36,6 +36,10 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 "-----------------------------------------------------------
 " display
 "-----------------------------------------------------------
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
+
 " 行番号を表示
 set number
 
