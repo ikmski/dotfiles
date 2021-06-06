@@ -160,18 +160,6 @@ augroup END
 "------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
-" Unite
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/unite-outline'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neoyank.vim'
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR> " バッファ一覧
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir file -buffer-name=files<CR> " ファイル一覧
-nnoremap <silent> ,uo :<C-u>Unite outline<CR> " アウトライン
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR> " 最近使用したファイル一覧
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR> " ヤンク一覧
-nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR> " 常用セット
-
 " Filer
 Plug 'lambdalisue/fern.vim'
 nnoremap <silent> ,fi :<C-u>Fern . -reveal=% -wait<CR>
