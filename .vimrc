@@ -170,8 +170,25 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 let g:fzf_layout = { 'up': '~100%' }
-command!      -bang -nargs=? -complete=dir    FZFiles   call fzf#vim#gitfiles(<q-args>, {'options' : '--reverse'}, <bang>0)
-command! -bar -bang -nargs=? -complete=buffer FZBuffers call fzf#vim#buffers(<q-args>, {'options' : '--reverse'}, <bang>0)
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+command! FZFiles call fzf#vim#gitfiles(<q-args>, {'options' : ['--layout=reverse', '--preview', 'cat {}']}, <bang>0)
+
+nnoremap <silent> ,ff :<C-u>FZFiles<CR>
+nnoremap <silent> ,fb :<C-u>Buffers<CR>
+nnoremap <silent> ,fu :<C-u>History<CR>
 
 command! -bang -nargs=* Pt
     \ call fzf#vim#grep(
@@ -183,9 +200,6 @@ command! -bang -nargs=* Pt
 function! s:find_git_root()
     return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
-
-nnoremap <silent> ,ff :<C-u>FZFiles<CR>
-nnoremap <silent> ,fb :<C-u>FZBuffers<CR>
 
 " Git
 Plug 'tpope/vim-fugitive'
