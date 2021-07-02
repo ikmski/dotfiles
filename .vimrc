@@ -212,6 +212,8 @@ Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
 
+let g:previm_show_header = 0
+
 " Syntax Check
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ikmski/astyle-vim'
