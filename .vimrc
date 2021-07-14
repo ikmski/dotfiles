@@ -32,13 +32,55 @@ set t_Co=256
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 
+"-----------------------------------------------------------
+" trminal
+"-----------------------------------------------------------
+
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
+
+let g:terminal_ansi_colors = [
+\   '#373c42',
+\   '#c66262',
+\   '#98c86c',
+\   '#eac170',
+\   '#80a2be',
+\   '#b192ba',
+\   '#90c9c1',
+\   '#c2c5c3',
+\   '#26282c',
+\   '#a04040',
+\   '#578e40',
+\   '#ec9c61',
+\   '#5c7f9a',
+\   '#82648b',
+\   '#5e8c86',
+\   '#6d747c',
+\ ]
+" [
+"   black,
+"   Red,
+"   green,
+"   yellow,
+"   blue,
+"   magenta,
+"   cyan,
+"   white,
+"   black (bright),
+"   red (bright),
+"   green (bright),
+"   yellow (bright),
+"   blue (bright),
+"   magenta (bright),
+"   cyan (bright),
+"   white (bright),
+" ]
+
 
 "-----------------------------------------------------------
 " display
 "-----------------------------------------------------------
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
 
 " 行番号を表示
 set number
