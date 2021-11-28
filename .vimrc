@@ -208,7 +208,8 @@ nnoremap <silent> ,fi :<C-u>Fern . -reveal=% -wait<CR>
 nnoremap <silent> ,fc :<C-u>Fern %:h -reveal=% -wait<CR>
 
 " fzf
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+""Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 let g:fzf_layout = { 'up': '~100%' }

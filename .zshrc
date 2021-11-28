@@ -9,8 +9,8 @@ fi
 # zplug
 if [ -d /usr/local/opt/zplug ]; then
     export ZPLUG_HOME=/usr/local/opt/zplug
-elif [ -d /usr/share/zplug ]; then
-    export ZPLUG_HOME=/usr/share/zplug
+else
+    export ZPLUG_HOME=~/.zplug
 fi
 source $ZPLUG_HOME/init.zsh
 
@@ -162,9 +162,9 @@ export PATH=/usr/local/bin:$PATH
 
 # for golang
 if [ -x "`which go`" ]; then
-    export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/develop/go
-    export PATH=$HOME/develop/go/bin:$GOROOT/bin:$PATH
+    export GOROOT=$(go env GOROOT)
+    export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
 
 # for ruby
@@ -195,6 +195,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--layout=reverse'
 
+#
 if [ -f ~/.my_profile ]; then
     source ~/.my_profile.zsh
 fi
