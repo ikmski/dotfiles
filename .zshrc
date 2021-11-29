@@ -167,6 +167,11 @@ if [ -x "`which go`" ]; then
     export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
 
+# for rust
+if [ -x "`which cargo`" ]; then
+    export PATH=$HOME/.cacrgo/bin:$PATH
+fi
+
 # for ruby
 if [ -x "`which rbenv`" ]; then
     export PATH=$HOME/.rbenv/bin:$PATH
