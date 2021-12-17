@@ -32,7 +32,7 @@
     fc = !git branch | fzf | xargs git checkout
     fa = !git status -s | fzf -m | awk '{print $NF}' | xargs git add
     fm = !git branch -r | fzf | xargs git merge --no-ff --no-commit
-[url "git@github.com:"]
+[url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 [ghq]
     root = ~/.ghq
