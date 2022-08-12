@@ -147,6 +147,9 @@ nnoremap <silent>bb :b#<CR>
 " tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]>
 
+" terminal
+nnoremap <silent><C-t> :<C-u>bo terminal ++rows=10<CR>
+
 "-----------------------------------------------------------
 " completion
 "-----------------------------------------------------------
