@@ -48,15 +48,17 @@ function _switch_profile() {
     if [ -z $selected_profile ]; then
         _unset_profile
     else
-        export AWS_PROFILE="$selected_profile"
         _display_normal "Switch AWS profile"
-        _display_green "> $AWS_PROFILE"
+        _display_green "> $selected_profile"
+        _display_normal ""
+        _display_normal "To enable the profile, run the following command."
+        _display_green "> export AWS_PROFILE=$selected_profile"
     fi
 }
 
 function _unset_profile() {
-    unset AWS_PROFILE
-    _display_yellow "Unset AWS profile"
+    _display_normal "To unset AWS profile, run the following command."
+    _display_yellow "> unset AWS_PROFILE"
 }
 
 function _help() {
@@ -75,10 +77,6 @@ function _help() {
     echo "        unset       unset AWS profile"
     echo "        help        show help"
     echo ""
-    echo "    NOTE:"
-    echo "        To set the AWS_PROFILE environment variable,"
-    echo "        Set the alias as below"
-    echo "            alias aws_switch=\"source aws_profile switch\""
 
     return
 }

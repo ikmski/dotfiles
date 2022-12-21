@@ -148,9 +148,6 @@ alias tmux='tmux -2'
 alias dockerf='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1}'\'' | xargs -o docker'
 alias dockerx='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1 " sh"}'\'' | xargs -o docker exec -it'
 
-# for aws_profile cli
-alias aws_switch="source aws_profile switch"
-
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
