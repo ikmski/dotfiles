@@ -407,7 +407,7 @@ augroup MyAutoCmd
     " 保存時にtabをスペースに変換する
     autocmd BufWritePre * :%s/\s\+$//ge
     " LSP のフォーマット処理
-    autocmd BufWritePre <buffer> LspDocumentFormatSync
+    autocmd BufWritePre * LspDocumentFormatSync
     " QuickFix
     autocmd QuickFixCmdPost *grep*,make cwindow
 
