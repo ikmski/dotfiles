@@ -1,0 +1,113 @@
+#!/bin/bash
+
+set -e
+
+# color
+ESC="\e["
+ESCEND=m
+COLOR_OFF=${ESC}${ESCEND}
+COLOR_RED="${ESC}31${ESCEND}"
+COLOR_GREEN="${ESC}32${ESCEND}"
+COLOR_YELLOW="${ESC}33${ESCEND}"
+
+function _display_normal() {
+    echo $1
+}
+
+function _display_red() {
+    echo -en "${COLOR_RED}"; echo $1; echo -en "${COLOR_OFF}"
+}
+
+function _display_green() {
+    echo -en "${COLOR_GREEN}"; echo $1; echo -en "${COLOR_OFF}"
+}
+
+function _display_yellow() {
+    echo -en "${COLOR_YELLOW}"; echo $1; echo -en "${COLOR_OFF}"
+}
+
+function _list_profiles() {
+    cat ~/.aws/config | \
+    grep -E '^\[profile (.*)]$' | \
+    sed -r 's/^\[profile (.*)]$/\1/'
+}
+
+function _show_profile() {
+    _display_normal "Current AWS profile"
+    _display_green "> $AWS_PROFILE"
+}
+
+function _select_profile() {
+    _list_profiles | fzf
+}
+
+function _switch_profile() {
+
+    local selected_profile=$(_select_profile)
+
+    if [ -z $selected_profile ]; then
+        _unset_profile
+    else
+        export AWS_PROFILE="$selected_profile"
+        _display_normal "Switch AWS profile"
+        _display_green "> $AWS_PROFILE"
+    fi
+}
+
+function _unset_profile() {
+    unset AWS_PROFILE
+    _display_yellow "Unset AWS profile"
+}
+
+function _help() {
+
+    echo ""
+    echo "    NAME:"
+    echo "        AWS Profile helper - aws_profile"
+    echo ""
+    echo "    USAGE:"
+    echo "        aws_profile command"
+    echo ""
+    echo "    COMMANDS:"
+    echo "        list        list AWS profiles"
+    echo "        show        show current AWS profile"
+    echo "        switch      switch AWS profile"
+    echo "        unset       unset AWS profile"
+    echo "        help        show help"
+    echo ""
+    echo "    NOTE:"
+    echo "        To set the AWS_PROFILE environment variable,"
+    echo "        Set the alias as below"
+    echo "            alias aws_switch=\"source aws_profile switch\""
+
+    return
+}
+
+#==================================================
+# main
+#==================================================
+if [ $# != 1 ]; then
+    _help
+    exit 1
+fi
+
+subcommand="$1"
+shift
+
+case $subcommand in
+    list)
+        _list_profiles
+        ;;
+    show)
+        _show_profile
+        ;;
+    switch)
+        _switch_profile
+        ;;
+    unset)
+        _unset_profile
+        ;;
+    *)
+        _help
+        ;;
+esac

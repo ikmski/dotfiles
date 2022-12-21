@@ -148,6 +148,9 @@ alias tmux='tmux -2'
 alias dockerf='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1}'\'' | xargs -o docker'
 alias dockerx='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1 " sh"}'\'' | xargs -o docker exec -it'
 
+# for aws_profile cli
+alias aws_switch="source aws_profile switch"
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
@@ -155,13 +158,14 @@ alias sudo='sudo '
 
 # local bin
 export PATH=$PATH:~/bin
+export PATH=$PATH:~/dotfiles/bin
 #
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 
-
 # for golang
+export PATH=/usr/local/go/bin:$PATH
 if [ -x "`which go`" ]; then
     export GOPATH=$HOME/develop/go
     export GOROOT=$(go env GOROOT)
