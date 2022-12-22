@@ -148,6 +148,9 @@ alias tmux='tmux -2'
 alias dockerf='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1}'\'' | xargs -o docker'
 alias dockerx='docker ps --format "{{.Names}} ({{.Image}}) [{{.Status}}]" | fzf | awk '\''{print  $1 " sh"}'\'' | xargs -o docker exec -it'
 
+# for aws profile
+alias awsp='export AWS_PROFILE=$(cat ~/.aws/config | grep -E "^\[profile (.*)]$" | sed -r "s/^\[profile (.*)]$/\1/" | fzf)'
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
