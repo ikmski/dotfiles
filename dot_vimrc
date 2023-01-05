@@ -153,45 +153,10 @@ nnoremap <silent><C-t> :<C-u>bo terminal ++rows=10<CR>
 "-----------------------------------------------------------
 " completion
 "-----------------------------------------------------------
-set completeopt=menuone,longest,preview
+set completeopt=menuone,noinsert,noselect,preview
+" <C-x> <C-k>: keywords in dictionary
 set dictionary=~/.config/vim/dict/words " https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa.txt
-let s:compl_key_dict = {
-      \ char2nr("\<C-l>"): "\<C-x>\<C-l>",
-      \ char2nr("\<C-n>"): "\<C-x>\<C-n>",
-      \ char2nr("\<C-p>"): "\<C-x>\<C-p>",
-      \ char2nr("\<C-k>"): "\<C-x>\<C-k>\<CR>",
-      \ char2nr("\<C-t>"): "\<C-x>\<C-t>\<CR>",
-      \ char2nr("\<C-i>"): "\<C-x>\<C-i>",
-      \ char2nr("\<C-]>"): "\<C-x>\<C-]>",
-      \ char2nr("\<C-f>"): "\<C-x>\<C-f>",
-      \ char2nr("\<C-d>"): "\<C-x>\<C-d>",
-      \ char2nr("\<C-v>"): "\<C-x>\<C-v>",
-      \ char2nr("\<C-u>"): "\<C-x>\<C-u>",
-      \ char2nr("\<C-o>"): "\<C-x>\<C-o>",
-      \ char2nr('s'): "\<C-x>s",
-      \ char2nr("\<C-s>"): "\<C-x>s"
-      \}
-" 表示メッセージ
-let s:hint_i_ctrl_x_msg = join([
-      \ '<C-l>: While lines',
-      \ '<C-n>: keywords in the current file',
-      \ "<C-k>: keywords in 'dictionary'",
-      \ "<C-t>: keywords in 'thesaurus'",
-      \ '<C-i>: keywords in the current and included files',
-      \ '<C-]>: tags',
-      \ '<C-f>: file names',
-      \ '<C-d>: definitions or macros',
-      \ '<C-v>: Vim command-line',
-      \ "<C-u>: User defined completion ('completefunc')",
-      \ "<C-o>: omni completion ('omnifunc')",
-      \ "s: Spelling suggestions ('spell')"
-      \], "\n")
-function! s:hint_i_ctrl_x() abort
-  echo s:hint_i_ctrl_x_msg
-  let c = getchar()
-  return get(s:compl_key_dict, c, nr2char(c))
-endfunction
-inoremap <expr> <C-x>  <SID>hint_i_ctrl_x()
+
 
 "-----------------------------------------------------------
 " auto command
@@ -286,22 +251,7 @@ let g:clang_format_style = {
 \   'FixNamespaceComments': v:true,
 \}
 
-" Snippet
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-Plug 'thomasfaingnaert/vim-lsp-snippets'
-Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-
 " LSP
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 
 Plug 'mattn/vim-lsp-settings'
@@ -313,9 +263,6 @@ let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_signs_enabled = 1
 let g:lsp_text_edit_enabled = 1
 let g:lsp_preview_float = 1
-let g:asyncomplete_popup_delay = 200
-let g:asyncomplete_auto_popup = 0
-let g:asyncomplete_auto_completeopt = 0
 
 let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
 let g:lsp_settings = {}
@@ -348,6 +295,38 @@ augroup lsp_install
 augroup END
 
 command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/.vim/lsp.log')
+
+" Completion
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+let g:asyncomplete_min_chars = 3
+let g:asyncomplete_popup_delay = 200
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
+
+" Snippet
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
+
+""" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+""" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+""" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+""" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
 
 " Go
 Plug 'mattn/vim-goimports'
