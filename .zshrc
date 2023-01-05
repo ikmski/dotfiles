@@ -158,7 +158,6 @@ alias sudo='sudo '
 
 # local bin
 export PATH=$PATH:~/bin
-export PATH=$PATH:~/dotfiles/bin
 #
 # for Homebrew
 export PATH=/usr/local/sbin:$PATH
