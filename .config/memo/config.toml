@@ -1,9 +1,0 @@
-memodir = "~/Dropbox/mattn_memo/_posts"
-editor = "vim"
-column = 30
-selectcmd = "peco"
-grepcmd = "grep -nH ${PATTERN} ${FILES}"
-assetsdir = "."
-pluginsdir = "~/.config/memo/plugins"
-templatedirfile = ""
-templatebodyfile = ""

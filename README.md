@@ -1,21 +1,21 @@
 # dotfiles
 
-## Install homebrew and packages
-### Install homebrew
-install according to `https://brew.sh/index_ja`
+Managed by [chezmoi](https://www.chezmoi.io/)
+
+## Install chezmoi
+https://www.chezmoi.io/install/
+
+ex) install binary to `/usr/local/bin`
 ```
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+$ sudo sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 ```
 
-### Install packages
+## Set up machine
 ```
-$ brew bundle --global
+$ chezmoi init git@github.com:ikmski/dotfiles.git
 ```
 
-### Update Brewfile
-```
-$ brew bundle dump --global --force
-```
+# Set up other tools
 
 ## Install zsh plugins
 ```

@@ -1,6 +1,14 @@
 [user]
-	name = masaki
+    {{- if index . "name" }}
+	name = {{ .name }}
+    {{- else }}
+	name = Masaki IKEDA
+    {{- end }}
+    {{- if index . "email" }}
+	email = {{ .email }}
+    {{- else }}
 	email = ikeda.masaki@gmail.com
+    {{- end }}
 [core]
     excludesfile = ~/.gitignore_global
     editor = vim
@@ -10,7 +18,6 @@
     ui = true
 [init]
 	defaultBranch = main
-    #templatedir = ~/.git_template
 [commit]
     template = ~/.git_template/commit_template
 [push]
