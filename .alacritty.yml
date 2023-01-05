@@ -1,0 +1,67 @@
+# env
+env:
+  TERM: xterm-256color
+
+# shell
+shell:
+  program: /usr/bin/zsh
+  args:
+    - --login
+
+# window
+window:
+  dimensions:
+    columns: 180
+    lines: 50
+
+  padding:
+    x: 2
+    y: 2
+
+  dynamic_title: true
+
+# font
+font:
+  size: 14
+  normal:
+    family: 'RictyDiminished'
+    style: Regular
+  bold:
+    family: 'RictyDiminished'
+    style: Bold
+  italic:
+    family: 'RictyDiminished'
+    style: Italic
+  bold_italic:
+    family: 'RictyDiminished'
+    style: Bold Itali
+
+# colors (Hybrid Custom)
+colors:
+  # Default colors
+  primary:
+    background: '0x1c1f20'
+    foreground: '0xc4c8c6'
+
+  # Normal colors
+  normal:
+    black:   '0x373c42'
+    red:     '0xc66262'
+    green:   '0x98c86c'
+    yellow:  '0xeac170'
+    blue:    '0x80a2be'
+    magenta: '0xb192b1'
+    cyan:    '0x90c9c1'
+    white:   '0xc2c5c3'
+
+  # Bright colors
+  bright:
+    black:   '0x26282c'
+    red:     '0xa04040'
+    green:   '0x578e40'
+    yellow:  '0xec9c61'
+    blue:    '0x5c7f9a'
+    magenta: '0x82648b'
+    cyan:    '0x5e8c86'
+    white:   '0x6d747c'
+

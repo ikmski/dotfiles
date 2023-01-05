@@ -21,6 +21,7 @@ DOT_FILES=(
  .tmux.conf
  .vimrc
  .zshrc
+ .alacritty.yml
 )
 
 for file in ${DOT_FILES[@]}
