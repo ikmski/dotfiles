@@ -1,0 +1,38 @@
+
+
+### Commit Message Format
+#
+# <Type>: #<Issue Number> <Message>
+#
+### Type cheat-sheet
+#
+# - feat:       new feature for the user, not a new feature for build script
+# - fix:        bug fix for the user, not a fix to a build script
+# - docs:       changes to the documentation
+# - style:      formatting, missing semi colons, etc; no production code change
+# - refactor:   refactoring production code, eg. renaming a variable
+# - test:       adding missing tests, refactoring tests; no production code change
+# - chore:      updating grunt tasks etc; no production code change
+#
+### Message cheat-sheet
+#
+#   Idiom                       Example
+# - fix A in B                  fix typo in docs
+# - add A to B                  add .js to import
+# - remove A from B             remove debug from tests
+# - move A to B                 move strings to strings.js
+# - change A to B               change copyright to 2017
+# - set A to B                  set default kernel to Gaussian
+# - update A to B               update plugin to v1.6
+# - convert A to B              convert time to string
+# - rename A to B               rename hoge to fuga
+# - use A                       use stub in testing
+# - support for                 add support for callbacks
+# - make it A                   make it possible to have IDs
+#
+### Emoji cheet-sheet
+#
+# ✨ :sparkles:         👍 :+1:                🎉 :tada:
+# 🔥 :fire:             🐛 :bug:               🚀 :rocket:
+# 🍻 :beers:            ✅ :white_check_mark:  📝 :memo:
+# ♻️  :recycle:          👮 :cop:               🚧 :construction:

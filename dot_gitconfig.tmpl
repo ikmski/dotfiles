@@ -1,0 +1,54 @@
+[user]
+    {{- if index . "name" }}
+	name = {{ .name }}
+    {{- else }}
+	name = Masaki IKEDA
+    {{- end }}
+    {{- if index . "email" }}
+	email = {{ .email }}
+    {{- else }}
+	email = ikeda.masaki@gmail.com
+    {{- end }}
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    autocrlf = false
+    ignorecase = false
+[color]
+    ui = true
+[init]
+	defaultBranch = main
+[commit]
+    template = ~/.git_template/commit_template
+[push]
+    default = simple
+[pull]
+	rebase = false
+[filter "media"]
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+[alias]
+    co = checkout
+    st = status
+    br = branch
+    ci = commit
+    tr = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order
+    tra = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(blue)<%an>%Creset' --abbrev-commit --date-order --all
+    ld = log --diff-filter=DR --summary
+    fe = fetch --prune
+    fc = !git branch | fzf | xargs git checkout
+    fa = !git status -s | fzf -m | awk '{print $NF}' | xargs git add
+    fm = !git branch -r | fzf | xargs git merge --no-ff --no-commit
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+[ghq]
+    root = ~/.ghq
+    root = ~/Develop/go/src
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff]
+	algorithm = histogram
+    colorMoved = zebra
