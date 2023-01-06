@@ -137,13 +137,6 @@ alias sudo='sudo '
 
 #########################################
 
-# local bin
-export PATH=$PATH:~/bin
-#
-# for Homebrew
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
-
 # for golang
 export PATH=/usr/local/go/bin:$PATH
 if [ -x "`which go`" ]; then
@@ -176,10 +169,10 @@ if [ -x "`which jenv`" ]; then
     eval "$(jenv init -)"
 fi
 
-# peco
-if [ -x "`which peco`" ]; then
-    source $XDG_CONFIG_HOME/peco/peco_functions.sh
-fi
+# local bin
+export PATH=~/bin:$PATH
+
+#########################################
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
