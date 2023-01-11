@@ -2,13 +2,17 @@ add_newline = true
 scan_timeout = 10
 
 format = '''
-[┌──\(](green)$username$hostname[\)-\[](green)$directory[\]](green) $git_branch$git_commit$git_state$git_metrics$git_status$fill$time
+[┌──\(](green)$username$hostname[\)-\[](green)$directory[\]](green) $git_branch$git_commit$git_state$git_metrics$git_status$fill$aws $memory_usage
 [└─](green)$character
 '''
 
 [character]
 error_symbol = '[\$](bold red)'
 success_symbol = '[\$](bold green)'
+vimcmd_symbol = '[%](bold green)'
+vimcmd_replace_one_symbol = '[%](bold purple)'
+vimcmd_replace_symbol = '[%](bold purple)'
+vimcmd_visual_symbol = '[%](bold yellow)'
 
 [directory]
 truncation_length = 100
@@ -42,6 +46,14 @@ use_12hr = true
 time_format = '%F %T'
 style = 'white'
 format = '[\[$time\]]($style)'
+
+[aws.region_aliases]
+ap-northeast-1 = 'jp'
+
+[memory_usage]
+disabled = false
+threshold = -1
+format = '[${ram}]($style)'
 
 [fill]
 symbol = ' '
