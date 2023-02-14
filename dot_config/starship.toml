@@ -38,7 +38,8 @@ format = '[@$hostname$ssh_symbol]($style)'
 [git_branch]
 always_show_remote = true
 style = 'green bold'
-format = '[\(git\)-\[$branch(:$remote_branch)\]]($style) '
+symbol = ' '
+format = '[$symbol$branch(:$remote_branch)]($style) '
 
 [time]
 disabled = false
