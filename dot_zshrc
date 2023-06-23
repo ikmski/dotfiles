@@ -146,9 +146,7 @@ if [ -x "`which go`" ]; then
 fi
 
 # for rust
-if [ -x "`which cargo`" ]; then
-    export PATH=$HOME/.cacrgo/bin:$PATH
-fi
+source $HOME/.cargo/env
 
 # for ruby
 if [ -x "`which rbenv`" ]; then
