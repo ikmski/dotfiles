@@ -48,6 +48,9 @@ time_format = '%F %T'
 style = 'white'
 format = '[\[$time\]]($style)'
 
+[aws]
+symbol = 'AWS '
+
 [aws.region_aliases]
 ap-northeast-1 = 'jp'
 
