@@ -146,7 +146,9 @@ if [ -x "`which go`" ]; then
 fi
 
 # for rust
-source $HOME/.cargo/env
+if [ -x "`which cargo`" ]; then
+    source $HOME/.cargo/env
+fi
 
 # for ruby
 if [ -x "`which rbenv`" ]; then
@@ -167,22 +169,32 @@ if [ -x "`which jenv`" ]; then
     eval "$(jenv init -)"
 fi
 
+# fzf
+if [ -x "`which fzf`" ]; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    export FZF_DEFAULT_OPTS='--layout=reverse'
+fi
+
+# for nvm
+if [ -x "`which nvim`" ]; then
+    export NVM_DIR="$HOME/.config/nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+# volta
+if [ -x "`which volta`" ]; then
+    export VOLTA_HOME="$HOME/.volta"
+    export PATH="$VOLTA_HOME/bin:$PATH"
+fi
+
+#########################################
 # local bin
 export PATH=/usr/local/bin:$PATH
 export PATH=~/bin:$PATH
-
-#########################################
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--layout=reverse'
 
 #
 if [ -f ~/.my_profile ]; then
     source ~/.my_profile.zsh
 fi
 
-# for nvm
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
