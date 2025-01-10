@@ -176,7 +176,7 @@ if [ -x "`which fzf`" ]; then
 fi
 
 # for nvm
-if [ -x "`which nvim`" ]; then
+if [ -x "`which nvm`" ]; then
     export NVM_DIR="$HOME/.config/nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -187,6 +187,12 @@ if [ -x "`which volta`" ]; then
     export VOLTA_HOME="$HOME/.volta"
     export PATH="$VOLTA_HOME/bin:$PATH"
 fi
+
+# nvim
+if [ -d "/opt/nvim-linux64" ]; then
+    export PATH="$PATH:/opt/nvim-linux64/bin"
+fi
+
 
 #########################################
 # local bin
