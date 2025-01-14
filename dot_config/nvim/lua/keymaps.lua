@@ -19,7 +19,7 @@ vim.keymap.set('n', 'tt', '<cmd>belowright new<CR><cmd>terminal<CR>', { silent =
 
 -- filer
 vim.keymap.set('n', ',fi', '<cmd>Fern . -reveal=% -wait<CR>', { silent = true })
-vim.keymap.set('n', ',fc', '<cmd>Fern %h -reveal=% -wait<CR>', { silent = true })
+vim.keymap.set('n', ',fc', '<cmd>Fern %:h -reveal=% -wait<CR>', { silent = true })
 
 -- finder
 local builtin = require('telescope.builtin')
