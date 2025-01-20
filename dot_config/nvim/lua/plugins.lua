@@ -34,6 +34,7 @@ require('lazy').setup({
             'nvim-telescope/telescope.nvim',
             dependencies = {
                 'nvim-lua/plenary.nvim',
+                'nvim-treesitter/nvim-treesitter',
             },
             config = function()
                 local telescope = require('telescope')
@@ -180,21 +181,6 @@ require('lazy').setup({
                 require("sg").setup()
             end
         },
-        {
-            "jackMort/ChatGPT.nvim",
-            event = "VeryLazy",
-            dependencies = {
-                "MunifTanjim/nui.nvim",
-                "nvim-lua/plenary.nvim",
-                "folke/trouble.nvim",
-                "nvim-telescope/telescope.nvim"
-            },
-            config = function()
-                require("chatgpt").setup({
-                    api_key_cmd = "op read op://Employee/OPENAI_API_KEY/credential",
-                })
-            end,
-        }
     },
     { -- markdown
         'MeanderingProgrammer/render-markdown.nvim',
@@ -256,5 +242,18 @@ require('lazy').setup({
                 },
             })
         end
+    },
+    { -- UI
+        {
+            "shellRaining/hlchunk.nvim",
+            event = { "BufReadPre", "BufNewFile" },
+            config = function()
+                require("hlchunk").setup({
+                    chunk = {
+                        enable = true
+                    },
+                })
+            end
+        },
     }
 })
