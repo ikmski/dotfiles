@@ -197,9 +197,12 @@ fi
 #########################################
 # local bin
 export PATH=/usr/local/bin:$PATH
+export PATH=~/.local/bin:$PATH
 export PATH=~/bin:$PATH
 
 #
 if [ -f ~/.my_profile.zsh ]; then
     source ~/.my_profile.zsh
 fi
+
+. "$HOME/.local/bin/env"

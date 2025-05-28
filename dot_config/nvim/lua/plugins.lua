@@ -172,37 +172,61 @@ require('lazy').setup({
             config = function()
                 require("diffview").setup()
             end
+        },
+        {
+            'f-person/git-blame.nvim',
+            event = 'VeryLazy',
+            config = function()
+                require('gitblame').setup {
+                    enabled = false,
+                }
+            end
         }
     },
     { -- ai
         {
             'sourcegraph/sg.nvim',
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim",
+            },
+            build = "nvim -l build/init.lua",
             config = function()
                 require("sg").setup()
             end
         },
     },
     { -- markdown
-        'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter',
-            'nvim-tree/nvim-web-devicons'
+        {
+            'MeanderingProgrammer/render-markdown.nvim',
+            dependencies = {
+                'nvim-treesitter/nvim-treesitter',
+                'nvim-tree/nvim-web-devicons'
+            },
+            config = function()
+                require('render-markdown').setup({
+                    render_modes = true,
+                    heading = {
+                        width = "block",
+                        left_pad = 0,
+                        right_pad = 4,
+                        icons = {},
+                    },
+                    code = {
+                        width = "block",
+                        right_pad = 4,
+                    },
+                })
+            end
         },
-        config = function()
-            require('render-markdown').setup({
-                render_modes = true,
-                heading = {
-                    width = "block",
-                    left_pad = 0,
-                    right_pad = 4,
-                    icons = {},
-                },
-                code = {
-                    width = "block",
-                    right_pad = 4,
-                },
-            })
-        end
+        {
+            "iamcco/markdown-preview.nvim",
+            event = 'VeryLazy',
+            filetypes = { "markdown" },
+            build = function()
+                vim.fn["mkdp#util#install"]()
+            end,
+        },
     },
     { -- golang
         'mattn/vim-goimports',
