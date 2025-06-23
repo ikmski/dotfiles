@@ -4,14 +4,6 @@ local autocmd = vim.api.nvim_create_autocmd
 
 augroup('MyAutoCmd', { clear = true })
 
-autocmd('FileType', {
-    group = 'MyAutoCmd',
-    pattern = '*',
-    callback = function()
-        vim.cmd([[NoMatchParen]]) -- Disable matchparen
-    end,
-})
-
 autocmd('BufWritePre', {
     group = 'MyAutoCmd',
     pattern = '*',

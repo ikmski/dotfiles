@@ -7,6 +7,10 @@ vim.opt.linebreak = true     -- Enable linebreak
 vim.opt.scrolloff = 8        -- Keep 8 lines visible when scrolling
 vim.opt.sidescrolloff = 8    -- Keep 8 columns visible when scrolling horizontally
 vim.opt.termguicolors = true -- Enable 24-bit RGB colors
+	
+-- Highlighting matching parens
+vim.g.loaded_matchparen = true
+vim.g.matchparen_disable_cursor_hl = true
 
 -- Tab and indentation settings
 vim.opt.tabstop = 4        -- Number of spaces a tab counts for

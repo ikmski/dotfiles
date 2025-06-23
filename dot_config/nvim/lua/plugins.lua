@@ -32,6 +32,7 @@ require('lazy').setup({
     { -- finder
         {
             'nvim-telescope/telescope.nvim',
+            tag = '0.1.8',
             dependencies = {
                 'nvim-lua/plenary.nvim',
                 'nvim-treesitter/nvim-treesitter',
@@ -84,7 +85,7 @@ require('lazy').setup({
                 require('mason-lspconfig').setup({
                     ensure_installed = {
                         'gopls',
-                        'volar',
+                        'vue_ls',
                         'ts_ls',
                         'lua_ls',
                         'dockerls',
@@ -149,7 +150,6 @@ require('lazy').setup({
                     { name = 'vsnip',    keyword_length = 3 },
                     { name = 'buffer',   keyword_length = 3 },
                     { name = 'path',     keyword_length = 3 },
-                    { name = "cody",     keyword_length = 3 },
                 }),
                 mapping = cmp.mapping.preset.insert({
                     ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -184,17 +184,6 @@ require('lazy').setup({
         }
     },
     { -- ai
-        {
-            'sourcegraph/sg.nvim',
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "nvim-telescope/telescope.nvim",
-            },
-            build = "nvim -l build/init.lua",
-            config = function()
-                require("sg").setup()
-            end
-        },
     },
     { -- markdown
         {
