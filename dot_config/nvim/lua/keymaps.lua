@@ -18,8 +18,13 @@ vim.keymap.set('n', '<C-]', 'g<C-]')
 vim.keymap.set('n', 'tt', '<cmd>belowright new<CR><cmd>terminal<CR>', { silent = true })
 
 -- filer
-vim.keymap.set('n', ',fi', '<cmd>Fern . -reveal=% -wait<CR>', { silent = true })
-vim.keymap.set('n', ',fc', '<cmd>Fern %:h -reveal=% -wait<CR>', { silent = true })
+--vim.keymap.set('n', ',fi', '<cmd>Fern . -reveal=% -wait<CR>', { silent = true })
+--vim.keymap.set('n', ',fc', '<cmd>Fern %:h -reveal=% -wait<CR>', { silent = true })
+vim.keymap.set('n', ',fi', '<cmd>Oil<CR>', { silent = true })
+vim.keymap.set('n', ',fc', function()
+    local cwd = vim.fn.getcwd()
+    require("oil").open(cwd)
+end, { silent = true })
 
 -- finder
 local builtin = require('telescope.builtin')

@@ -7,7 +7,7 @@ vim.opt.linebreak = true     -- Enable linebreak
 vim.opt.scrolloff = 8        -- Keep 8 lines visible when scrolling
 vim.opt.sidescrolloff = 8    -- Keep 8 columns visible when scrolling horizontally
 vim.opt.termguicolors = true -- Enable 24-bit RGB colors
-	
+
 -- Highlighting matching parens
 vim.g.loaded_matchparen = true
 vim.g.matchparen_disable_cursor_hl = true
@@ -62,3 +62,12 @@ vim.opt.listchars = {
 -- buffer
 vim.opt.hidden = true  -- Allows you to switch between buffers without saving
 vim.opt.confirm = true -- Confirm before performing certain potentially destructive operations,
+
+-- diagnostic
+vim.diagnostic.config({
+    virtual_text = {
+        format = function(diagnostic)
+            return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+        end,
+    },
+})

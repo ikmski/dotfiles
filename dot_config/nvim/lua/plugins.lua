@@ -20,14 +20,40 @@ require('lazy').setup({
         end
     },
     { -- filer
-        "lambdalisue/fern.vim",
-        dependencies = {
-            'lambdalisue/nerdfont.vim',
-            'lambdalisue/fern-renderer-nerdfont.vim',
+        {
+            "lambdalisue/fern.vim",
+            dependencies = {
+                'lambdalisue/nerdfont.vim',
+                'lambdalisue/fern-renderer-nerdfont.vim',
+            },
+            config = function()
+                vim.g['fern#renderer'] = "nerdfont"
+            end
         },
-        config = function()
-            vim.g['fern#renderer'] = "nerdfont"
-        end
+        {
+            'stevearc/oil.nvim',
+            dependencies = {
+                "nvim-mini/mini.icons",
+            },
+            lazy = false,
+            config = function()
+                require("oil").setup({
+                    watch_for_changes = true,
+                    keymaps = {
+                        ["?"] = { mode = "n", "actions.show_help" },
+                        ["<C-h>"] = { mode = "n", "actions.parent" },
+                        ["<C-l>"] = { mode = "n", "actions.select" },
+                        ["<CR>"] = { mode = "n", "actions.select" },
+                        ["<C-p>"] = { mode = "n", "actions.preview" },
+                        ["*"] = { mode = "n", "actions.toggle_hidden" },
+                    },
+                    use_default_keymaps = false,
+                    view_options = {
+                        show_hidden = true,
+                    },
+                })
+            end
+        },
     },
     { -- finder
         {
@@ -86,7 +112,7 @@ require('lazy').setup({
                     ensure_installed = {
                         'gopls',
                         'vue_ls',
-                        'ts_ls',
+                        'vtsls',
                         'lua_ls',
                         'dockerls',
                         'docker_compose_language_service',
@@ -98,34 +124,6 @@ require('lazy').setup({
         },
         {
             'neovim/nvim-lspconfig',
-            config = function()
-                local lspconfig = require('lspconfig')
-                lspconfig.gopls.setup {}
-                lspconfig.volar.setup {
-                    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-                    init_options = {
-                        vue = {
-                            hybridMode = false,
-                        },
-                    },
-                }
-                lspconfig.lua_ls.setup {
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                        },
-                    },
-                }
-                lspconfig.dockerls.setup {}
-                lspconfig.docker_compose_language_service.setup {}
-                lspconfig.html.setup {}
-
-                vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-                    vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = true }
-                )
-            end
         },
     },
     { -- completion
