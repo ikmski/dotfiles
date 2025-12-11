@@ -7,6 +7,12 @@ vim.keymap.set('i', '(<Enter>', '()<Left><CR><ESC><S-o>')
 vim.keymap.set('i', '\'', '\'\'<LEFT>')
 vim.keymap.set('i', '\"', '\"\"<LEFT>')
 
+-- Move corsor
+vim.keymap.set('n', '<C-h>', 'h', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-j>', 'j', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', 'k', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-l>', 'l', { noremap = true, silent = true })
+
 -- Move buffer
 vim.keymap.set('n', 'bp', '<cmd>bprevious<CR>', { silent = true }) -- Open the previous buffer
 vim.keymap.set('n', 'bn', '<cmd>bnext<CR>', { silent = true })     -- Open the next buffer
@@ -20,7 +26,9 @@ vim.keymap.set('n', 'tt', '<cmd>belowright new<CR><cmd>terminal<CR>', { silent =
 -- filer
 --vim.keymap.set('n', ',fi', '<cmd>Fern . -reveal=% -wait<CR>', { silent = true })
 --vim.keymap.set('n', ',fc', '<cmd>Fern %:h -reveal=% -wait<CR>', { silent = true })
-vim.keymap.set('n', ',fi', '<cmd>Oil<CR>', { silent = true })
+vim.keymap.set('n', ',fi', function()
+    require("oil").open()
+end, { silent = true })
 vim.keymap.set('n', ',fc', function()
     local cwd = vim.fn.getcwd()
     require("oil").open(cwd)
